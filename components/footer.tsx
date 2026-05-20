@@ -73,20 +73,16 @@ export function Footer() {
             <h4 className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-5">Lord&rsquo;s Day</h4>
             <ul className="space-y-4">
               <li>
+                <p className="text-[13px] font-medium text-primary-foreground/80">Sunday Service</p>
+                <p className="text-[13px] text-primary-foreground/55">8:00 AM</p>
+              </li>
+              <li>
                 <p className="text-[13px] font-medium text-primary-foreground/80">Sunday School</p>
-                <p className="text-[13px] text-primary-foreground/55">9:15 AM</p>
+                <p className="text-[13px] text-primary-foreground/55">After Worship</p>
               </li>
               <li>
-                <p className="text-[13px] font-medium text-primary-foreground/80">Morning Worship</p>
-                <p className="text-[13px] text-primary-foreground/55">10:30 AM</p>
-              </li>
-              <li>
-                <p className="text-[13px] font-medium text-primary-foreground/80">Evening Service</p>
-                <p className="text-[13px] text-primary-foreground/55">6:00 PM</p>
-              </li>
-              <li>
-                <p className="text-[13px] font-medium text-primary-foreground/80">Wednesday Prayer</p>
-                <p className="text-[13px] text-primary-foreground/55">7:00 PM</p>
+                <p className="text-[13px] font-medium text-primary-foreground/80">Friday Evening Service</p>
+                <p className="text-[13px] text-primary-foreground/55">6:00 PM - 7:30 PM</p>
               </li>
             </ul>
           </div>
