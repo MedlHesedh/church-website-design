@@ -11,7 +11,7 @@ export const metadata = {
 const elders = [
   {
     name: 'Rev. Minandro Masangcap',
-    title: 'Senior/Theological Pastor',
+    title: 'Senior/Ministrial Pastor',
     credentials: 'MDiv · Southern Baptist Theological Seminary',
     email: 'minandromasangcap@truthandlifechurch.org',
     bio: 'Minandro Masangcap has served as Senior Pastor of Truth and Life since 2015. He received his Master of Divinity from Southern Seminary and was ordained to gospel ministry in 2003. James and his wife Sarah have four children. He is committed to careful expository preaching, pastoral counseling, and the theological training of the next generation of church leaders.',
@@ -25,7 +25,7 @@ const elders = [
   },
   {
     name: 'Ptr. Roderick Pernito',
-    title: 'Ministrial Pastor',
+    title: 'Mission Pastor',
     credentials: 'MA in Biblical Studies · Southeastern Seminary',
     email: 'roderickpernito@truthandlifechurch.org',
     bio: 'Roderick Pernito is a business owner in Macon who received his MA in Biblical Studies from Southeastern Seminary before being confirmed as a Pastoral Elder in 2020. He oversees the Men\'s Covenant Group, assists in visitation, and serves on the pastoral care rotation. Marcus and his wife Diane have two children.',

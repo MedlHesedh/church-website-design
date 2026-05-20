@@ -81,9 +81,9 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-border bg-card">
               {[
                 { label: 'Sunday School', time: '9:15', period: 'AM', note: 'All ages · Classrooms' },
-                { label: 'Morning Worship', time: '10:30', period: 'AM', note: 'Main Service · Sanctuary' },
-                { label: 'Evening Service', time: '6:00', period: 'PM', note: 'Bible Study & Prayer' },
-                { label: 'Wednesday Prayer', time: '7:00', period: 'PM', note: 'Corporate Prayer Meeting' },
+                { label: 'Morning Worship', time: '8:00', period: 'AM', note: 'Main Service · Sanctuary' },
+                { label: 'Prayer Meeting', time: '6:00', period: 'PM', note: 'Bible Study & Prayer' },
+                // { label: 'Wednesday Prayer', time: '7:00', period: 'PM', note: 'Corporate Prayer Meeting' },
               ].map((service, i) => (
                 <div key={i} className="p-8 border-b sm:border-b-0 sm:border-r border-border last:border-0">
                   <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-3">{service.label}</p>
@@ -210,7 +210,7 @@ export default function Home() {
                       <Link href="/messages" className="inline-flex items-center gap-1.5 text-[13px] font-medium text-primary hover:text-accent transition-colors">
                         <span className="w-6 h-6 bg-primary/10 flex items-center justify-center">
                           <svg viewBox="0 0 24 24" className="w-3 h-3 text-primary fill-current">
-                            <path d="M8 5v14l11-7z"/>
+                            <path d="M8 5v14l11-7z" />
                           </svg>
                         </span>
                         Watch

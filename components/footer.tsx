@@ -81,7 +81,7 @@ export function Footer() {
                 <p className="text-[13px] text-primary-foreground/55">After Worship</p>
               </li>
               <li>
-                <p className="text-[13px] font-medium text-primary-foreground/80">Friday Evening Service</p>
+                <p className="text-[13px] font-medium text-primary-foreground/80">Prayer Meeting</p>
                 <p className="text-[13px] text-primary-foreground/55">6:00 PM - 7:30 PM</p>
               </li>
             </ul>
