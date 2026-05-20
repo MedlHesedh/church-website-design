@@ -10,25 +10,25 @@ export const metadata = {
 
 const elders = [
   {
-    name: 'Rev. James Whitfield',
-    title: 'Senior Pastor',
+    name: 'Rev. Minandro Masangcap',
+    title: 'Senior/Theological Pastor',
     credentials: 'MDiv · Southern Baptist Theological Seminary',
-    email: 'pastor@truthandlifechurch.org',
-    bio: 'James Whitfield has served as Senior Pastor of Truth and Life since 2015. He received his Master of Divinity from Southern Seminary and was ordained to gospel ministry in 2003. James and his wife Sarah have four children. He is committed to careful expository preaching, pastoral counseling, and the theological training of the next generation of church leaders.',
+    email: 'minandromasangcap@truthandlifechurch.org',
+    bio: 'Minandro Masangcap has served as Senior Pastor of Truth and Life since 2015. He received his Master of Divinity from Southern Seminary and was ordained to gospel ministry in 2003. James and his wife Sarah have four children. He is committed to careful expository preaching, pastoral counseling, and the theological training of the next generation of church leaders.',
   },
   {
-    name: 'Thomas Garrett',
-    title: 'Teaching Elder',
+    name: 'Ptr. Jonathan Vitug',
+    title: 'Administrative Pastor',
     credentials: 'ThM · Reformed Theological Seminary',
-    email: 'thomas@truthandlifechurch.org',
-    bio: 'Thomas Garrett served as a high school principal for twenty-two years before receiving his ThM from Reformed Theological Seminary and being confirmed as a Teaching Elder in 2018. He teaches the adult Sunday School class and assists with preaching on regular rotation. Thomas and his wife Patricia have three grown children and several grandchildren.',
+    email: 'jonathanvitug@truthandlifechurch.org',
+    bio: 'Jonathan Vitug served as a high school principal for twenty-two years before receiving his ThM from Reformed Theological Seminary and being confirmed as a Teaching Elder in 2018. He teaches the adult Sunday School class and assists with preaching on regular rotation. Thomas and his wife Patricia have three grown children and several grandchildren.',
   },
   {
-    name: 'Marcus Webb',
-    title: 'Pastoral Elder',
+    name: 'Ptr. Roderick Pernito',
+    title: 'Ministrial Pastor',
     credentials: 'MA in Biblical Studies · Southeastern Seminary',
-    email: 'marcus@truthandlifechurch.org',
-    bio: 'Marcus Webb is a business owner in Macon who received his MA in Biblical Studies from Southeastern Seminary before being confirmed as a Pastoral Elder in 2020. He oversees the Men\'s Covenant Group, assists in visitation, and serves on the pastoral care rotation. Marcus and his wife Diane have two children.',
+    email: 'roderickpernito@truthandlifechurch.org',
+    bio: 'Roderick Pernito is a business owner in Macon who received his MA in Biblical Studies from Southeastern Seminary before being confirmed as a Pastoral Elder in 2020. He oversees the Men\'s Covenant Group, assists in visitation, and serves on the pastoral care rotation. Marcus and his wife Diane have two children.',
   },
 ]
 
