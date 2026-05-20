@@ -1,11 +1,39 @@
 import Link from 'next/link'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
+import { PageHeader } from '@/components/page-header'
 
 export const metadata = {
-  title: 'Plan Your Visit - [TODO: Church Name]',
-  description: 'Plan your first visit to our church. Find service times, location, what to expect, and more.',
+  title: 'Plan Your Visit — Truth and Life Christian Church',
+  description: 'Everything you need to know before visiting Truth and Life Christian Church for the first time.',
 }
+
+const faqs = [
+  {
+    q: 'What should I wear?',
+    a: 'Come as you are. Members dress in a range from casual to business casual. There is no dress code and no judgment. What matters is that you are there.',
+  },
+  {
+    q: 'Do I have to be a Christian to attend?',
+    a: 'Absolutely not. All are welcome. Many people who visit us are seekers, skeptics, or those with questions about Christianity. You are welcome to observe, listen, and ask questions at your own pace.',
+  },
+  {
+    q: 'Will someone pressure me to join or give money?',
+    a: 'No. We will not single out visitors or ask for anything. During the service, an offering is received — but giving is an act of worship for members and you are not expected to participate.',
+  },
+  {
+    q: 'How long is the service?',
+    a: 'The Sunday morning service typically runs about 75–85 minutes. We begin with congregational singing, Scripture reading, and prayer, followed by the sermon — which is usually 40–45 minutes.',
+  },
+  {
+    q: 'What happens with my children?',
+    a: 'Nursery care is available for infants and toddlers. Children in Kindergarten through Grade 5 attend Children\'s Church at 10:30 AM. Older children are encouraged to remain in the service with their families.',
+  },
+  {
+    q: 'How do I become a member?',
+    a: 'We offer a two-session Membership Class (held quarterly on Saturday mornings) for those who wish to pursue membership. Contact the office or speak with any elder for more information.',
+  },
+]
 
 export default function VisitPage() {
   return (
@@ -13,89 +41,68 @@ export default function VisitPage() {
       <Header />
 
       <main className="flex-1">
-        {/* Page Header */}
-        <section className="bg-gradient-to-b from-primary via-primary to-primary/95 text-primary-foreground py-16 md:py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">
-              Plan Your Visit
-            </h1>
-            <p className="text-lg font-light opacity-95 max-w-2xl">
-              We&apos;d love to have you join us. Everything you need to know before your first visit.
-            </p>
-          </div>
-        </section>
+        <PageHeader
+          label="We&apos;re Glad You&apos;re Coming"
+          title="Plan Your Visit"
+          subtitle="Everything you need to know before you arrive. We are a church of ordinary people shaped by an extraordinary gospel, and we would love to have you join us."
+        />
 
         {/* Quick Info */}
-        <section className="py-16 md:py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <section className="py-20 md:py-24 bg-background">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
               {/* Location */}
               <div>
-                <h2 className="font-serif text-3xl font-bold text-foreground mb-6">
-                  Location & Address
-                </h2>
-                <div className="bg-secondary rounded p-8 border border-border mb-6">
-                  <h3 className="font-serif text-2xl font-bold text-foreground mb-4">
-                    [TODO: Church Name]
+                <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Find Us</p>
+                <h2 className="font-serif text-2xl font-semibold text-foreground mb-6">Location &amp; Directions</h2>
+
+                <div className="border border-border bg-card p-7 mb-4">
+                  <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
+                    Truth &amp; Life Christian Church
                   </h3>
-                  <p className="text-lg text-foreground font-medium mb-2">
-                    [TODO: Street Address]
-                  </p>
-                  <p className="text-lg text-foreground font-medium mb-6">
-                    [TODO: City, State ZIP]
-                  </p>
+                  <address className="not-italic text-[15px] text-foreground/75 leading-relaxed mb-5">
+                    4821 Covenant Way<br />
+                    Macon, Georgia 31201
+                  </address>
                   <a
-                    href="https://maps.google.com/?q=[TODO: Church Name Address]"
+                    href="https://maps.google.com/?q=4821+Covenant+Way+Macon+GA+31201"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center px-6 py-2 bg-primary text-primary-foreground rounded font-medium hover:opacity-90 transition-opacity"
+                    className="inline-flex items-center px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 transition-colors"
                   >
-                    Get Directions
+                    Get Directions &rarr;
                   </a>
                 </div>
 
-                {/* Parking */}
-                <div className="bg-primary/5 rounded p-6 border border-accent border-opacity-20">
-                  <h4 className="font-bold text-foreground mb-2">Parking</h4>
-                  <p className="text-foreground text-sm">
-                    [TODO: Describe parking options available. Include: number of spots, accessibility information, and directions to parking areas.]
+                <div className="border border-border bg-secondary p-5">
+                  <p className="text-[13px] font-medium text-foreground mb-1">Parking</p>
+                  <p className="text-[13px] text-foreground/65 leading-relaxed">
+                    Free parking is available in the main lot and the overflow lot across the street. Accessible spaces are clearly marked near the main entrance. Arrive 10–15 minutes early, especially on your first visit.
                   </p>
                 </div>
               </div>
 
               {/* Service Times */}
               <div>
-                <h2 className="font-serif text-3xl font-bold text-foreground mb-6">
-                  Service Times
-                </h2>
+                <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Schedule</p>
+                <h2 className="font-serif text-2xl font-semibold text-foreground mb-6">Service Times</h2>
 
-                <div className="space-y-6">
-                  <div className="bg-secondary rounded p-8 border border-border">
-                    <h3 className="font-serif text-2xl font-bold text-foreground mb-3">
-                      Sunday Morning Worship
-                    </h3>
-                    <p className="text-primary font-bold text-lg mb-3">
-                      [TODO: Time]
-                    </p>
-                    <p className="text-foreground text-sm mb-4">
-                      [TODO: Duration and description]
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      ⏱️ Arrive 10-15 minutes early to find a seat and settle in.
-                    </p>
-                  </div>
-
-                  <div className="bg-secondary rounded p-8 border border-border">
-                    <h3 className="font-serif text-2xl font-bold text-foreground mb-3">
-                      Sunday Evening Service
-                    </h3>
-                    <p className="text-primary font-bold text-lg mb-3">
-                      [TODO: Time]
-                    </p>
-                    <p className="text-foreground text-sm">
-                      [TODO: Description]
-                    </p>
-                  </div>
+                <div className="space-y-0 border border-border">
+                  {[
+                    { label: 'Sunday School', time: '9:15 AM', note: 'All ages · Classrooms' },
+                    { label: 'Morning Worship', time: '10:30 AM', note: 'Main Service · Sanctuary (~80 min)' },
+                    { label: 'Evening Service', time: '6:00 PM', note: 'Bible Study & Prayer · Sanctuary' },
+                    { label: 'Wednesday Prayer', time: '7:00 PM', note: 'Corporate Prayer · Fellowship Hall' },
+                  ].map((service, i) => (
+                    <div key={i} className="bg-card border-b border-border last:border-b-0 px-6 py-5 flex items-center justify-between">
+                      <div>
+                        <p className="text-sm font-semibold text-foreground">{service.label}</p>
+                        <p className="text-[13px] text-muted-foreground">{service.note}</p>
+                      </div>
+                      <p className="font-serif text-xl font-light text-primary flex-shrink-0 ml-4">{service.time}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -103,280 +110,149 @@ export default function VisitPage() {
         </section>
 
         {/* What to Expect */}
-        <section className="py-16 md:py-20 bg-secondary">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
+        <section className="py-20 md:py-24 bg-secondary">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">First Visit</p>
+            <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-10 max-w-md leading-snug">
               What to Expect
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded p-8 border border-border">
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-4">
-                  The Atmosphere
-                </h3>
-                <p className="text-foreground leading-relaxed">
-                  [TODO: Describe the physical environment and atmosphere. What is the building like? What should visitors expect in terms of formality, warmth, and setting?]
-                </p>
-              </div>
-
-              <div className="bg-white rounded p-8 border border-border">
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-4">
-                  The Worship
-                </h3>
-                <p className="text-foreground leading-relaxed">
-                  [TODO: Describe your worship style. What kind of music? How long does worship last? Is it contemporary, traditional, hymn-based? What role does music play in your service?]
-                </p>
-              </div>
-
-              <div className="bg-white rounded p-8 border border-border">
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-4">
-                  The Message
-                </h3>
-                <p className="text-foreground leading-relaxed">
-                  [TODO: Explain your preaching style. Is it expository? Topical? How long are sermons? What can first-time visitors expect from the teaching?]
-                </p>
-              </div>
-
-              <div className="bg-white rounded p-8 border border-border">
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-4">
-                  Children & Nursery
-                </h3>
-                <p className="text-foreground leading-relaxed">
-                  [TODO: Describe childcare and children's services. Are there: nursery services, children's church, Sunday school? What age groups are accommodated?]
-                </p>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-border">
+              {[
+                {
+                  title: 'The Atmosphere',
+                  body: 'Truth and Life is a warm but unhurried congregation. You will be greeted at the door and given a bulletin. The service begins on time with congregational singing. The building is a plain, historic space designed for hearing and worship — not performance.',
+                },
+                {
+                  title: 'The Worship',
+                  body: 'We sing psalms, traditional hymns, and confessionally sound contemporary songs — accompanied by piano and sometimes small ensemble. Worship is participatory and congregational. We do not have a worship team in the sense of a performance band; the congregation is the choir.',
+                },
+                {
+                  title: 'The Preaching',
+                  body: 'Every sermon is an exposition of a biblical text. The preacher works through the passage carefully, explains what it says, and applies it to the lives of people in the room. You can expect a thoughtful, Scripture-saturated message of approximately 40–45 minutes.',
+                },
+                {
+                  title: 'After the Service',
+                  body: 'We linger. Fellowship after the service — coffee in the foyer, conversations in the parking lot — is part of who we are. You will be warmly welcomed and invited to introduce yourself. A welcome bag with information about the church will be given to first-time guests.',
+                },
+              ].map((item, i) => (
+                <div key={i} className="bg-card border-b md:border-r border-border last:border-0 p-7">
+                  <div className="w-5 h-0.5 bg-accent mb-4" />
+                  <h3 className="font-serif text-xl font-semibold text-foreground mb-3">{item.title}</h3>
+                  <p className="text-[14px] text-foreground/65 leading-relaxed">{item.body}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* First Time Visitor */}
-        <section className="py-16 md:py-20 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-8 text-center">
-              First Time Visitor Guide
+        {/* Step-by-Step Guide */}
+        <section className="py-20 md:py-24 bg-background">
+          <div className="max-w-5xl mx-auto px-6 lg:px-8">
+            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Your First Sunday</p>
+            <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-10 max-w-md leading-snug">
+              A Simple Guide
             </h2>
 
-            <div className="space-y-6">
-              <div className="bg-secondary rounded p-8 border border-border">
-                <div className="flex gap-6">
-                  <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg">
-                    1
-                  </div>
+            <div className="space-y-0 border border-border">
+              {[
+                {
+                  step: '01',
+                  title: 'Arrive 10–15 Minutes Early',
+                  body: 'Find parking, locate the sanctuary entrance, and allow yourself time to settle in before the service begins. Greeters will be at the doors.',
+                },
+                {
+                  step: '02',
+                  title: 'Check In Your Children',
+                  body: 'If you have young children, nursery check-in is on the right as you enter the building. Staff will give you a pager and help you find your child\'s room. Children stay with you during Sunday School at 9:15.',
+                },
+                {
+                  step: '03',
+                  title: 'Find a Seat',
+                  body: 'Seating is open throughout the sanctuary. An usher will offer you a bulletin and help you find a seat if the building is full. Family seating is available on both sides of the center aisle.',
+                },
+                {
+                  step: '04',
+                  title: 'Participate as You Are Comfortable',
+                  body: 'Stand with us when we sing, follow along with the Scripture reading in the pew Bible or bulletin, and simply listen to the sermon. There is no pressure to do anything you are not yet comfortable with.',
+                },
+                {
+                  step: '05',
+                  title: 'Stay for Fellowship',
+                  body: 'After the service, we invite you to stay for coffee and conversation. A pastor or elder will be happy to answer any questions, give you more information about the church, or simply talk.',
+                },
+              ].map((item, i) => (
+                <div key={i} className="bg-card border-b border-border last:border-b-0 flex items-start gap-6 px-7 py-6">
+                  <span className="font-serif text-2xl font-light text-accent/50 flex-shrink-0 w-8">{item.step}</span>
                   <div>
-                    <h3 className="font-bold text-foreground text-lg mb-2">Arrive Early</h3>
-                    <p className="text-foreground">
-                      Plan to arrive 10-15 minutes before the service starts. This allows time to find parking, locate the sanctuary, and settle in without feeling rushed.
-                    </p>
+                    <h3 className="font-serif text-lg font-semibold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-[14px] text-foreground/65 leading-relaxed">{item.body}</p>
                   </div>
                 </div>
-              </div>
-
-              <div className="bg-secondary rounded p-8 border border-border">
-                <div className="flex gap-6">
-                  <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg">
-                    2
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-foreground text-lg mb-2">Check In</h3>
-                    <p className="text-foreground">
-                      [TODO: Explain your first-time visitor process. Do you have: a welcome table, an information booth, or a visitor check-in area? What should first-timers do?]
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-secondary rounded p-8 border border-border">
-                <div className="flex gap-6">
-                  <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg">
-                    3
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-foreground text-lg mb-2">Find a Seat</h3>
-                    <p className="text-foreground">
-                      [TODO: Provide guidance on seating. Is it open seating? Reserved? Are there pews or chairs? Any special sections?]
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-secondary rounded p-8 border border-border">
-                <div className="flex gap-6">
-                  <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg">
-                    4
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-foreground text-lg mb-2">Stay Relaxed</h3>
-                    <p className="text-foreground">
-                      You&apos;re in a place where people are gathering to worship Jesus. Feel free to participate as much or as little as you&apos;re comfortable with. There's no expectation or judgment—everyone is on their own spiritual journey.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-secondary rounded p-8 border border-border">
-                <div className="flex gap-6">
-                  <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg">
-                    5
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-foreground text-lg mb-2">Connect Afterward</h3>
-                    <p className="text-foreground">
-                      [TODO: Explain what happens after the service. Is there: fellowship time, coffee, a greeting line? Do you give out visitor information? How can people connect with the church?]
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Accessibility */}
-        <section className="py-16 md:py-20 bg-secondary">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
-              Accessibility
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded p-8 border border-border">
-                <h3 className="font-bold text-foreground text-lg mb-3">🚗 Parking</h3>
-                <p className="text-foreground text-sm mb-4">
-                  [TODO: Describe accessible parking availability]
-                </p>
-              </div>
-
-              <div className="bg-white rounded p-8 border border-border">
-                <h3 className="font-bold text-foreground text-lg mb-3">♿ Wheelchair Access</h3>
-                <p className="text-foreground text-sm mb-4">
-                  [TODO: Describe wheelchair accessibility throughout the building]
-                </p>
-              </div>
-
-              <div className="bg-white rounded p-8 border border-border">
-                <h3 className="font-bold text-foreground text-lg mb-3">👂 Hearing Assistance</h3>
-                <p className="text-foreground text-sm mb-4">
-                  [TODO: Describe hearing assistance technology or services available]
-                </p>
-              </div>
-
-              <div className="bg-white rounded p-8 border border-border">
-                <h3 className="font-bold text-foreground text-lg mb-3">🧑‍🦽 Other Accommodations</h3>
-                <p className="text-foreground text-sm mb-4">
-                  [TODO: List any other accessibility features or accommodations available]
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-8 bg-primary text-primary-foreground rounded p-6 text-center">
-              <p className="mb-4">
-                Do you need a specific accommodation? Please contact us in advance.
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-6 py-2 bg-accent text-accent-foreground rounded font-medium hover:opacity-90 transition-opacity"
-              >
-                Get in Touch
-              </Link>
+              ))}
             </div>
           </div>
         </section>
 
         {/* FAQ */}
-        <section className="py-16 md:py-20 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
+        <section className="py-20 md:py-24 bg-secondary">
+          <div className="max-w-5xl mx-auto px-6 lg:px-8">
+            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Common Questions</p>
+            <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-10 max-w-md leading-snug">
               Frequently Asked Questions
             </h2>
 
-            <div className="space-y-6">
-              <details className="bg-secondary rounded p-6 border border-border group">
-                <summary className="font-bold text-foreground cursor-pointer flex items-center justify-between">
-                  What should I wear?
-                  <span className="ml-auto">
-                    <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            <div className="divide-y divide-border border border-border">
+              {faqs.map((faq, i) => (
+                <details key={i} className="group bg-card">
+                  <summary className="flex items-center justify-between px-7 py-5 cursor-pointer list-none font-semibold text-foreground text-[15px] hover:text-primary transition-colors">
+                    {faq.q}
+                    <svg
+                      className="w-4 h-4 text-muted-foreground flex-shrink-0 ml-4 transition-transform group-open:rotate-180"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
-                  </span>
-                </summary>
-                <p className="text-foreground mt-4 leading-relaxed">
-                  [TODO: Answer: Casual dress is perfectly fine. People wear everything from jeans to business casual to formal attire.]
-                </p>
-              </details>
-
-              <details className="bg-secondary rounded p-6 border border-border group">
-                <summary className="font-bold text-foreground cursor-pointer flex items-center justify-between">
-                  Do I have to be a member to attend?
-                  <span className="ml-auto">
-                    <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                    </svg>
-                  </span>
-                </summary>
-                <p className="text-foreground mt-4 leading-relaxed">
-                  [TODO: Answer: No, our church is open to everyone. All are welcome to attend worship regardless of membership status.]
-                </p>
-              </details>
-
-              <details className="bg-secondary rounded p-6 border border-border group">
-                <summary className="font-bold text-foreground cursor-pointer flex items-center justify-between">
-                  Will someone pressure me to join?
-                  <span className="ml-auto">
-                    <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                    </svg>
-                  </span>
-                </summary>
-                <p className="text-foreground mt-4 leading-relaxed">
-                  [TODO: Answer: No. We welcome people at any stage of their spiritual journey. We hope you'll return and that you'll eventually make a public commitment to Christ, but there's no pressure.]
-                </p>
-              </details>
-
-              <details className="bg-secondary rounded p-6 border border-border group">
-                <summary className="font-bold text-foreground cursor-pointer flex items-center justify-between">
-                  Where do I give an offering?
-                  <span className="ml-auto">
-                    <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                    </svg>
-                  </span>
-                </summary>
-                <p className="text-foreground mt-4 leading-relaxed">
-                  [TODO: Answer: We pass offering plates during the service, but giving is optional. Visitors are not expected to give. You can also give online at [link] or mail contributions to our address.]
-                </p>
-              </details>
-
-              <details className="bg-secondary rounded p-6 border border-border group">
-                <summary className="font-bold text-foreground cursor-pointer flex items-center justify-between">
-                  What if I have more questions?
-                  <span className="ml-auto">
-                    <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                    </svg>
-                  </span>
-                </summary>
-                <p className="text-foreground mt-4 leading-relaxed">
-                  Feel free to reach out to us before your visit. Our pastoral staff would love to answer any questions you might have.
-                </p>
-              </details>
+                  </summary>
+                  <p className="px-7 pb-6 pt-1 text-[14px] text-foreground/65 leading-relaxed">
+                    {faq.a}
+                  </p>
+                </details>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Final CTA */}
-        <section className="py-16 md:py-20 bg-primary text-primary-foreground">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">
-              We&apos;re Excited to Meet You!
-            </h2>
-            <p className="text-lg font-light opacity-95 mb-8 max-w-2xl mx-auto">
-              We look forward to worshipping with you. If you have any questions before your visit or want to know more about our church, please don&apos;t hesitate to reach out.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-8 py-3 bg-accent text-accent-foreground font-medium rounded hover:opacity-90 transition-opacity"
-            >
-              Contact Us
-            </Link>
+        <section className="py-20 md:py-24 bg-primary text-primary-foreground">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div className="max-w-xl">
+              <h2 className="font-serif text-3xl md:text-4xl font-light leading-snug mb-3">
+                We hope to meet you Sunday.
+              </h2>
+              <p className="text-base font-light text-primary-foreground/65 leading-relaxed">
+                If you have questions before your first visit, please do not hesitate to contact us. We are glad to answer them.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center px-7 py-3 bg-accent text-white text-sm font-medium tracking-wide hover:bg-accent/90 transition-colors"
+              >
+                Contact Us
+              </Link>
+              <a
+                href="https://maps.google.com/?q=4821+Covenant+Way+Macon+GA+31201"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 transition-colors"
+              >
+                Get Directions
+              </a>
+            </div>
           </div>
         </section>
       </main>

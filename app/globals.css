@@ -4,91 +4,87 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #faf7f2;
-  --foreground: #1a1410;
-  --card: #ffffff;
-  --card-foreground: #1a1410;
-  --popover: #ffffff;
-  --popover-foreground: #1a1410;
-  --primary: #2c3e50;
-  --primary-foreground: #ffffff;
-  --secondary: #f3f0eb;
-  --secondary-foreground: #4a4238;
-  --muted: #e8e4dd;
-  --muted-foreground: #6b6157;
-  --accent: #a88f5f;
-  --accent-foreground: #ffffff;
-  --destructive: #dc3545;
-  --destructive-foreground: #ffffff;
-  --border: #e0d9d0;
-  --input: #f3f0eb;
-  --ring: #2c3e50;
-  --chart-1: #2c3e50;
-  --chart-2: #1a1410;
+  --background: #FDFCF8;
+  --foreground: #1A1814;
+  --card: #FFFFFF;
+  --card-foreground: #1A1814;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1814;
+  --primary: #1B2D40;
+  --primary-foreground: #F0EBE1;
+  --secondary: #F3F0EA;
+  --secondary-foreground: #3D372E;
+  --muted: #EAE6DE;
+  --muted-foreground: #6B6358;
+  --accent: #9C7730;
+  --accent-foreground: #FFFFFF;
+  --destructive: #B83232;
+  --destructive-foreground: #FFFFFF;
+  --border: #E2DDD5;
+  --input: #F3F0EA;
+  --ring: #1B2D40;
+  --chart-1: #1B2D40;
+  --chart-2: #9C7730;
   --chart-3: #4a4238;
-  --chart-4: #6b6157;
+  --chart-4: #6b6358;
   --chart-5: #8b8074;
-  --radius: 0.375rem;
-  --sidebar: #faf7f2;
-  --sidebar-foreground: #1a1410;
-  --sidebar-primary: #2c3e50;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #a88f5f;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #e0d9d0;
-  --sidebar-ring: #2c3e50;
+  --radius: 0.125rem;
+  --sidebar: #FDFCF8;
+  --sidebar-foreground: #1A1814;
+  --sidebar-primary: #1B2D40;
+  --sidebar-primary-foreground: #F0EBE1;
+  --sidebar-accent: #9C7730;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #E2DDD5;
+  --sidebar-ring: #1B2D40;
   --shadow-x: 0px;
-  --shadow-y: 1px;
-  --shadow-blur: 2px;
+  --shadow-y: 2px;
+  --shadow-blur: 8px;
   --shadow-spread: 0px;
-  --shadow-opacity: 0.08;
-  --shadow-color: #000000;
+  --shadow-opacity: 0.07;
+  --shadow-color: #1B2D40;
 }
 
 .dark {
-  --background: #1a1410;
-  --foreground: #f5f1eb;
-  --card: #2c2420;
-  --card-foreground: #f5f1eb;
-  --popover: #2c2420;
-  --popover-foreground: #f5f1eb;
-  --primary: #4a9d83;
-  --primary-foreground: #ffffff;
-  --secondary: #2c2420;
-  --secondary-foreground: #d4cdc4;
-  --muted: #3e3935;
-  --muted-foreground: #b0a8a0;
-  --accent: #a88f5f;
-  --accent-foreground: #ffffff;
-  --destructive: #dc3545;
-  --destructive-foreground: #ffffff;
-  --border: #3e3935;
-  --input: #3e3935;
-  --ring: #4a9d83;
-  --chart-1: #4a9d83;
-  --chart-2: #2c3e50;
-  --chart-3: #a88f5f;
-  --chart-4: #6b6157;
+  --background: #1A1814;
+  --foreground: #F0EBE1;
+  --card: #252118;
+  --card-foreground: #F0EBE1;
+  --popover: #252118;
+  --popover-foreground: #F0EBE1;
+  --primary: #3A5472;
+  --primary-foreground: #F0EBE1;
+  --secondary: #2C2820;
+  --secondary-foreground: #D4CCC0;
+  --muted: #3C3830;
+  --muted-foreground: #A8A098;
+  --accent: #C09040;
+  --accent-foreground: #FFFFFF;
+  --destructive: #C0392B;
+  --destructive-foreground: #FFFFFF;
+  --border: #3C3830;
+  --input: #3C3830;
+  --ring: #3A5472;
+  --chart-1: #3A5472;
+  --chart-2: #C09040;
+  --chart-3: #9C7730;
+  --chart-4: #6b6358;
   --chart-5: #8b8074;
-  --sidebar: #1a1410;
-  --sidebar-foreground: #f5f1eb;
-  --sidebar-primary: #4a9d83;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #a88f5f;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #3e3935;
-  --sidebar-ring: #4a9d83;
-  --shadow-x: 0px;
-  --shadow-y: 1px;
-  --shadow-blur: 2px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 0.2;
-  --shadow-color: #000000;
+  --sidebar: #1A1814;
+  --sidebar-foreground: #F0EBE1;
+  --sidebar-primary: #3A5472;
+  --sidebar-primary-foreground: #F0EBE1;
+  --sidebar-accent: #C09040;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #3C3830;
+  --sidebar-ring: #3A5472;
+  --shadow-opacity: 0.18;
 }
 
 @theme inline {
   --font-sans: 'Inter', 'Inter Fallback';
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-serif: 'Source Serif 4', 'Source Serif 4 Fallback';
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -113,9 +109,9 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
+  --radius-sm: calc(var(--radius) - 1px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
   --radius-xl: calc(var(--radius) + 4px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
@@ -125,8 +121,6 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-serif: 'Source Serif 4', 'Source Serif 4 Fallback';
-  /* computed shadow variables below - do not modify */
   --shadow-2xs: var(--shadow-x) var(--shadow-y) color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
   --shadow-xs: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-spread) color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
   --shadow-sm: var(--shadow-x) var(--shadow-y) calc(var(--shadow-blur) * 1.5) var(--shadow-spread) color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
@@ -136,11 +130,6 @@
   --shadow-2xl: calc(var(--shadow-x) * 8) calc(var(--shadow-y) * 8) calc(max(0px, var(--shadow-blur) * 9 - 8px)) calc(var(--shadow-spread) - 12px) color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 250%), transparent);
   --shadow: var(--shadow-md);
   --color-shadow-color: var(--shadow-color);
-  --shadow-opacity: var(--shadow-opacity);
-  --shadow-spread: var(--shadow-spread);
-  --shadow-blur: var(--shadow-blur);
-  --shadow-y: var(--shadow-y);
-  --shadow-x: var(--shadow-x);
 }
 
 @layer base {
@@ -149,5 +138,10 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background-color: color-mix(in srgb, var(--accent) 20%, transparent);
   }
 }

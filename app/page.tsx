@@ -2,251 +2,262 @@ import Link from 'next/link'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 
+const recentSermons = [
+  {
+    date: 'May 18, 2025',
+    series: 'Gospel of John',
+    title: 'The Eternal Word Made Flesh',
+    preacher: 'Pastor James Whitfield',
+    passage: 'John 1:1–18',
+  },
+  {
+    date: 'May 11, 2025',
+    series: 'Romans',
+    title: 'Justified by Faith Alone',
+    preacher: 'Pastor James Whitfield',
+    passage: 'Romans 3:21–26',
+  },
+  {
+    date: 'May 4, 2025',
+    series: 'Ephesians',
+    title: 'Elected in Love Before the Foundation of the World',
+    preacher: 'Elder Thomas Garrett',
+    passage: 'Ephesians 1:3–14',
+  },
+]
+
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-b from-primary via-primary to-primary/95 text-primary-foreground py-20 md:py-32">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Committed to{' '}
-                <span className="text-accent">Biblical Preaching</span>
-              </h1>
-              <p className="text-lg md:text-xl font-light mb-8 opacity-95">
-                We are a Reformed Southern Baptist church dedicated to expository preaching of God&apos;s Word, biblical discipleship, and gospel-centered community in [TODO: City, State].
+
+        {/* ── Hero ─────────────────────────────────────────── */}
+        <section className="bg-primary text-primary-foreground">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8 py-24 md:py-36">
+            <p className="text-[11px] font-medium tracking-[0.15em] uppercase text-accent mb-6">
+              Truth &amp; Life Christian Church · Macon, Georgia
+            </p>
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light leading-[1.08] mb-8 max-w-4xl">
+              Gathered Around the Word.{' '}
+              <span className="italic">Sent Into the World.</span>
+            </h1>
+            <p className="text-base md:text-lg font-light text-primary-foreground/70 max-w-xl leading-relaxed mb-5">
+              A Reformed Southern Baptist congregation devoted to the expository preaching of Scripture, biblical discipleship, and gospel-centered community.
+            </p>
+            <blockquote className="border-l-2 border-accent pl-4 mb-10">
+              <p className="text-sm text-primary-foreground/55 italic">
+                &ldquo;For I decided to know nothing among you except Jesus Christ and him crucified.&rdquo; — 1 Corinthians 2:2
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/visit"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-accent text-accent-foreground font-medium rounded hover:opacity-90 transition-opacity"
-                >
-                  Plan Your Visit
-                </Link>
-                <Link
-                  href="/messages"
-                  className="inline-flex items-center justify-center px-6 py-3 border-2 border-accent text-accent font-medium rounded hover:bg-accent hover:text-accent-foreground transition-colors"
-                >
-                  Watch Sermons
-                </Link>
-              </div>
+            </blockquote>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/visit"
+                className="inline-flex items-center justify-center px-7 py-3 bg-accent text-white text-sm font-medium tracking-wide hover:bg-accent/90 transition-colors"
+              >
+                Plan Your Visit
+              </Link>
+              <Link
+                href="/messages"
+                className="inline-flex items-center justify-center px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 transition-colors"
+              >
+                Listen to Sermons
+              </Link>
             </div>
           </div>
         </section>
 
-        {/* Service Times */}
-        <section className="py-16 md:py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
+        {/* ── Service Times ────────────────────────────────── */}
+        <section className="py-20 md:py-24 bg-secondary">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            <div className="max-w-xs mb-10">
+              <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Lord&rsquo;s Day</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground leading-snug">
                 When We Gather
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Join us for worship, prayer, and the study of God&apos;s Word. All are welcome.
-              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Sunday Morning */}
-              <div className="bg-secondary rounded p-8 text-center">
-                <div className="text-accent text-4xl font-serif font-bold mb-4">⛪</div>
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-2">
-                  Sunday Morning Worship
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  <span className="text-lg font-bold text-primary">[TODO: Time]</span>
-                  <br />
-                  Main Service
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Our primary gathering for expository preaching and congregational worship.
-                </p>
-              </div>
-
-              {/* Sunday Evening */}
-              <div className="bg-secondary rounded p-8 text-center">
-                <div className="text-accent text-4xl font-serif font-bold mb-4">📖</div>
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-2">
-                  Sunday Evening
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  <span className="text-lg font-bold text-primary">[TODO: Time]</span>
-                  <br />
-                  Bible Study & Prayer
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Deeper study of God&apos;s Word and corporate prayer.
-                </p>
-              </div>
-
-              {/* Wednesday Evening */}
-              <div className="bg-secondary rounded p-8 text-center">
-                <div className="text-accent text-4xl font-serif font-bold mb-4">🙏</div>
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-2">
-                  Wednesday Evening
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  <span className="text-lg font-bold text-primary">[TODO: Time]</span>
-                  <br />
-                  Prayer Service
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  A time of prayer, devotion, and spiritual encouragement.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-12 bg-primary/5 rounded-lg p-8 border border-accent border-opacity-20">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
-                  <h3 className="font-serif text-2xl font-bold text-foreground mb-2">
-                    Location
-                  </h3>
-                  <p className="text-muted-foreground text-lg">
-                    [TODO: Church Name]<br />
-                    [TODO: Street Address]<br />
-                    [TODO: City, State ZIP]
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-border bg-card">
+              {[
+                { label: 'Sunday School', time: '9:15', period: 'AM', note: 'All ages · Classrooms' },
+                { label: 'Morning Worship', time: '10:30', period: 'AM', note: 'Main Service · Sanctuary' },
+                { label: 'Evening Service', time: '6:00', period: 'PM', note: 'Bible Study & Prayer' },
+                { label: 'Wednesday Prayer', time: '7:00', period: 'PM', note: 'Corporate Prayer Meeting' },
+              ].map((service, i) => (
+                <div key={i} className="p-8 border-b sm:border-b-0 sm:border-r border-border last:border-0">
+                  <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-3">{service.label}</p>
+                  <p className="font-serif text-4xl font-light text-foreground mb-1">
+                    {service.time} <span className="text-xl text-muted-foreground font-normal">{service.period}</span>
                   </p>
-                </div>
-                <Link
-                  href="/visit"
-                  className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground font-medium rounded hover:opacity-90 transition-opacity whitespace-nowrap"
-                >
-                  Get Directions
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Core Values */}
-        <section className="py-16 md:py-20 bg-secondary">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Who We Are
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Our identity is rooted in biblical conviction and gospel hope.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded p-8 border border-border">
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-4">
-                  Expository Preaching
-                </h3>
-                <p className="text-foreground leading-relaxed">
-                  [TODO: Replace with your church's emphasis on expository preaching. Describe your commitment to verse-by-verse exposition of Scripture and systematic theology.]
-                </p>
-              </div>
-
-              <div className="bg-white rounded p-8 border border-border">
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-4">
-                  Gospel-Centered Community
-                </h3>
-                <p className="text-foreground leading-relaxed">
-                  [TODO: Replace with your church's vision for community life. Describe discipleship, accountability, care, and the practice of New Testament church life.]
-                </p>
-              </div>
-
-              <div className="bg-white rounded p-8 border border-border">
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-4">
-                  Reformed Theology
-                </h3>
-                <p className="text-foreground leading-relaxed">
-                  [TODO: Replace with a summary of your doctrinal commitments. Link to your Statement of Faith page for details.]
-                </p>
-              </div>
-
-              <div className="bg-white rounded p-8 border border-border">
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-4">
-                  Missions & Outreach
-                </h3>
-                <p className="text-foreground leading-relaxed">
-                  [TODO: Replace with your church's missions focus. Describe local outreach, church planting, and global mission partnerships.]
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Latest Sermons Preview */}
-        <section className="py-16 md:py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Recent Messages
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Expository sermons from God&apos;s Word, available to watch or listen anytime.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-secondary rounded overflow-hidden hover:shadow-lg transition-shadow">
-                  <div className="bg-primary/10 h-48 flex items-center justify-center">
-                    <div className="text-6xl text-primary/30">▶</div>
-                  </div>
-                  <div className="p-6">
-                    <p className="text-sm text-accent font-medium mb-2">[TODO: Date]</p>
-                    <h3 className="font-serif text-xl font-bold text-foreground mb-2">
-                      [TODO: Sermon Title]
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      [TODO: Preacher Name] • [TODO: Passage]
-                    </p>
-                    <Link
-                      href="/messages"
-                      className="text-primary font-medium hover:text-primary/80 transition-colors inline-flex items-center gap-2"
-                    >
-                      Watch Sermon →
-                    </Link>
-                  </div>
+                  <p className="text-[13px] text-muted-foreground mt-2">{service.note}</p>
                 </div>
               ))}
             </div>
 
-            <div className="text-center">
+            <div className="mt-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-card border border-border px-7 py-5">
+              <div>
+                <p className="text-sm font-medium text-foreground">4821 Covenant Way, Macon, Georgia 31201</p>
+                <p className="text-[13px] text-muted-foreground mt-0.5">Arrive 10–15 minutes early to find your seat.</p>
+              </div>
               <Link
-                href="/messages"
-                className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground font-medium rounded hover:opacity-90 transition-opacity"
+                href="/visit"
+                className="inline-flex items-center text-sm font-medium text-primary hover:text-accent transition-colors whitespace-nowrap"
               >
-                View All Sermons
+                Get Directions &rarr;
               </Link>
             </div>
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section className="py-16 md:py-20 bg-primary text-primary-foreground">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">
-              Experience the Gospel
-            </h2>
-            <p className="text-lg font-light mb-8 opacity-95">
-              We believe that Jesus Christ is Lord and Savior. Through faith in Him and His resurrection, we receive the gift of eternal life. If you&apos;d like to speak with someone about the gospel or have questions, please don&apos;t hesitate to reach out.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-3 bg-accent text-accent-foreground font-medium rounded hover:opacity-90 transition-opacity"
-              >
-                Get in Touch
-              </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center px-8 py-3 border-2 border-accent text-accent font-medium rounded hover:bg-accent hover:text-accent-foreground transition-colors"
-              >
-                Learn About Us
-              </Link>
+        {/* ── Who We Are ───────────────────────────────────── */}
+        <section className="py-20 md:py-24 bg-background">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+              <div>
+                <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Our Convictions</p>
+                <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground leading-snug mb-6">
+                  Rooted in Scripture.<br />Reformed in Doctrine.
+                </h2>
+                <p className="text-[15px] text-foreground/75 leading-relaxed mb-5">
+                  Truth and Life Christian Church is a congregation of sinners saved by sovereign grace. We hold to the historic Baptist confessional tradition, affirming the Second London Baptist Confession of 1689 as a faithful summary of our beliefs.
+                </p>
+                <p className="text-[15px] text-foreground/75 leading-relaxed mb-8">
+                  Our worship is ordered by Scripture, our preaching is expository, and our discipleship is modeled after the pattern of the New Testament church. We believe the gospel is the power of God for salvation, and we make no apology for preaching it plainly.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href="/about"
+                    className="inline-flex items-center justify-center px-6 py-2.5 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 transition-colors"
+                  >
+                    About Our Church
+                  </Link>
+                  <Link
+                    href="/faith"
+                    className="inline-flex items-center justify-center px-6 py-2.5 border border-border text-foreground text-sm font-medium hover:bg-secondary transition-colors"
+                  >
+                    What We Believe
+                  </Link>
+                </div>
+              </div>
+
+              <div className="space-y-0 border border-border">
+                {[
+                  {
+                    label: 'Expository Preaching',
+                    body: 'Every sermon is a careful, verse-by-verse exposition of a biblical text. We believe Scripture interprets Scripture, and that faithful preaching lets the text drive the message.',
+                  },
+                  {
+                    label: 'Reformed Theology',
+                    body: 'We confess the doctrines of grace — the sovereignty of God in election, particular atonement, effectual calling, and the perseverance of the saints — as taught throughout Scripture.',
+                  },
+                  {
+                    label: 'Gospel-Centered Community',
+                    body: 'Church membership is a covenant relationship. We practice mutual accountability, corporate prayer, and the care of one another\'s souls in the pattern of the New Testament.',
+                  },
+                  {
+                    label: 'Missions & Outreach',
+                    body: 'We give, send, and go. We support international missionaries through the IMB and labor to reach our own neighbors in Macon with the saving message of Christ.',
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="px-7 py-6 border-b border-border last:border-b-0">
+                    <h3 className="font-serif text-lg font-semibold text-foreground mb-2">{item.label}</h3>
+                    <p className="text-[14px] text-foreground/65 leading-relaxed">{item.body}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
+
+        {/* ── Recent Sermons ────────────────────────────────── */}
+        <section className="py-20 md:py-24 bg-secondary">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+              <div>
+                <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">From the Pulpit</p>
+                <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground leading-snug">
+                  Recent Messages
+                </h2>
+              </div>
+              <Link href="/messages" className="text-sm font-medium text-primary hover:text-accent transition-colors whitespace-nowrap">
+                View All Sermons &rarr;
+              </Link>
+            </div>
+
+            <div className="space-y-0 border border-border bg-card">
+              {recentSermons.map((sermon, i) => (
+                <article key={i} className="group border-b border-border last:border-b-0">
+                  <div className="flex flex-col sm:flex-row">
+                    {/* Date + Series marker */}
+                    <div className="sm:w-48 px-7 py-6 border-b sm:border-b-0 sm:border-r border-border bg-secondary/60 flex sm:flex-col justify-between sm:justify-start gap-2 flex-shrink-0">
+                      <p className="text-[11px] font-medium tracking-[0.1em] uppercase text-accent">{sermon.series}</p>
+                      <p className="text-[12px] text-muted-foreground">{sermon.date}</p>
+                    </div>
+                    {/* Content */}
+                    <div className="flex-1 px-7 py-6">
+                      <h3 className="font-serif text-xl font-semibold text-foreground mb-2 leading-snug group-hover:text-primary transition-colors">
+                        {sermon.title}
+                      </h3>
+                      <p className="text-[13px] text-muted-foreground">
+                        <span className="font-medium text-foreground/80">{sermon.preacher}</span>
+                        {' · '}
+                        {sermon.passage}
+                      </p>
+                    </div>
+                    {/* Watch link */}
+                    <div className="px-7 py-6 flex items-center justify-start sm:justify-end flex-shrink-0">
+                      <Link href="/messages" className="inline-flex items-center gap-1.5 text-[13px] font-medium text-primary hover:text-accent transition-colors">
+                        <span className="w-6 h-6 bg-primary/10 flex items-center justify-center">
+                          <svg viewBox="0 0 24 24" className="w-3 h-3 text-primary fill-current">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </span>
+                        Watch
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Gospel CTA ───────────────────────────────────── */}
+        <section className="py-20 md:py-24 bg-primary text-primary-foreground">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-5">New to the Church?</p>
+              <h2 className="font-serif text-4xl md:text-5xl font-light leading-[1.1] mb-6">
+                We&rsquo;d love to<br />
+                <span className="italic">welcome you.</span>
+              </h2>
+              <p className="text-base font-light text-primary-foreground/70 leading-relaxed mb-4 max-w-xl">
+                Whether you are a longtime believer, a seeker with honest questions, or someone curious about the Reformed Baptist tradition — there is a place for you at Truth and Life.
+              </p>
+              <blockquote className="border-l-2 border-accent pl-4 mb-10">
+                <p className="text-[13px] text-primary-foreground/50 italic">
+                  &ldquo;So then you are no longer strangers and aliens, but you are fellow citizens with the saints and members of the household of God.&rdquo; — Ephesians 2:19
+                </p>
+              </blockquote>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/visit"
+                  className="inline-flex items-center justify-center px-7 py-3 bg-accent text-white text-sm font-medium tracking-wide hover:bg-accent/90 transition-colors"
+                >
+                  Plan Your First Visit
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 transition-colors"
+                >
+                  Ask Us a Question
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </main>
 
       <Footer />
