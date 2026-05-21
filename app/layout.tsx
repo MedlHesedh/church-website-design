@@ -27,9 +27,9 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Truth and Life Christian Church · Macon, Georgia',
+  title: 'Truth and Life Christian Church · Orion, Bataan',
   description:
-    'A Reformed Southern Baptist church in Macon, Georgia, committed to the expository preaching of Scripture, biblical discipleship, and gospel-centered community.',
+    'A Reformed Southern Baptist church in Orion, Bataan, committed to the expository preaching of Scripture, biblical discipleship, and gospel-centered community.',
   icons: {
     icon: [
       { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },

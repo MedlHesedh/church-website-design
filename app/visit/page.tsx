@@ -63,7 +63,7 @@ export default function VisitPage() {
                   </h3>
                   <address className="not-italic text-[15px] text-foreground/75 leading-relaxed mb-5">
                     4821 Covenant Way<br />
-                    Macon, Georgia 31201
+                    Orion, Bataan 31201
                   </address>
                   <a
                     href="https://maps.google.com/?q=4821+Covenant+Way+Macon+GA+31201"

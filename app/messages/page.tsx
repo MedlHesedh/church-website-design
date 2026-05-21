@@ -4,7 +4,7 @@ import { PageHeader } from '@/components/page-header'
 
 export const metadata = {
   title: 'Messages — Truth and Life Christian Church',
-  description: 'Expository sermons from Truth and Life Christian Church in Macon, Georgia.',
+  description: 'Expository sermons from Truth and Life Christian Church in Orion, Bataan.',
 }
 
 const sermons = [

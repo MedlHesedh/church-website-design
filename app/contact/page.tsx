@@ -66,7 +66,7 @@ export default function ContactPage() {
               {[
                 {
                   label: 'Address',
-                  value: '4821 Covenant Way\nMacon, Georgia 31201',
+                  value: '4821 Covenant Way\nOrion, Bataan 31201',
                   link: null,
                   sublabel: 'Directions available via Google Maps',
                 },

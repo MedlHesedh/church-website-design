@@ -39,7 +39,7 @@ export function Footer() {
             </p>
             <address className="not-italic text-[13px] text-primary-foreground/60 leading-relaxed">
               4821 Covenant Way<br />
-              Macon, Georgia 31201
+              Orion, Bataan 31201
             </address>
           </div>
 

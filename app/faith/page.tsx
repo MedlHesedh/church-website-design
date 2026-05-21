@@ -5,7 +5,7 @@ import { PageHeader } from '@/components/page-header'
 
 export const metadata = {
   title: 'What We Believe — Truth and Life Christian Church',
-  description: 'The doctrinal convictions of Truth and Life Christian Church, a Reformed Southern Baptist congregation in Macon, Georgia.',
+  description: 'The doctrinal convictions of Truth and Life Christian Church, a Reformed Southern Baptist congregation in Orion, Bataan.',
 }
 
 const articles = [

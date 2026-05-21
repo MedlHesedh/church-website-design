@@ -23,18 +23,22 @@ pnpm lint       # Run ESLint
 ## Architecture
 
 ### Routing
+
 Pages live in `app/<route>/page.tsx`. The root layout (`app/layout.tsx`) wraps everything with the theme provider and sets global metadata. There is no `src/` directory.
 
 ### Styling conventions
+
 - Use `cn()` from `lib/utils.ts` (clsx + tailwind-merge) whenever combining conditional class names
 - Headings use `font-serif` (Source Serif 4); body uses Inter; mono uses Geist Mono — all loaded via `next/font/google` in `globals.css`
 - Color tokens (`--primary`, `--accent`, `--muted`, etc.) are defined in `globals.css` and must be used instead of hardcoded colors so dark mode works correctly
 
 ### Components
+
 - `components/ui/` — untouched shadcn primitives; modify by overriding at the call site, not inside the file
 - `components/header.tsx` — client component; owns mobile menu state
 - `components/footer.tsx` — server component
 - `hooks/use-toast.ts` — custom toast hook; limit is 1 toast at a time
 
 ### Dummy content
-All pages are populated with realistic dummy content for **Truth and Life Christian Church** (Macon, Georgia). Names, addresses, phone numbers, emails, sermon data, events, and leader bios are fictional stand-ins ready to swap out. The contact form's `handleSubmit` has a `// TODO` comment for wiring in a real email service (Resend, SendGrid, etc.).
+
+All pages are populated with realistic dummy content for **Truth and Life Christian Church** (Orion, Bataan). Names, addresses, phone numbers, emails, sermon data, events, and leader bios are fictional stand-ins ready to swap out. The contact form's `handleSubmit` has a `// TODO` comment for wiring in a real email service (Resend, SendGrid, etc.).

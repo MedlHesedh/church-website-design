@@ -60,7 +60,7 @@ function buildEmailHtml(
           <td style="padding:28px 36px 24px;border-bottom:1px solid #e8e4dc;">
             <p style="margin:0 0 4px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#9C7730;font-family:Arial,sans-serif;">Contact Form</p>
             <h1 style="margin:0;font-size:22px;font-weight:600;color:#1B2D40;font-family:Georgia,serif;">New Message Received</h1>
-            <p style="margin:6px 0 0;font-size:13px;color:#888;font-family:Arial,sans-serif;">Truth and Life Christian Church &middot; Macon, Georgia</p>
+            <p style="margin:6px 0 0;font-size:13px;color:#888;font-family:Arial,sans-serif;">Truth and Life Christian Church &middot; Orion, Bataan</p>
           </td>
         </tr>
         <tr>

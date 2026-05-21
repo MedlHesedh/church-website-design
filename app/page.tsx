@@ -37,7 +37,7 @@ export default function Home() {
         <section className="bg-primary text-primary-foreground">
           <div className="max-w-6xl mx-auto px-6 lg:px-8 py-24 md:py-36">
             <p className="text-[11px] font-medium tracking-[0.15em] uppercase text-accent mb-6">
-              Truth &amp; Life Christian Church · Macon, Georgia
+              Truth &amp; Life Christian Church Main · Orion, Bataan
             </p>
             <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light leading-[1.08] mb-8 max-w-4xl">
               Gathered Around the Word.{' '}
@@ -97,7 +97,7 @@ export default function Home() {
 
             <div className="mt-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-card border border-border px-7 py-5">
               <div>
-                <p className="text-sm font-medium text-foreground">4821 Covenant Way, Macon, Georgia 31201</p>
+                <p className="text-sm font-medium text-foreground">4821 Covenant Way, Orion, Bataan 31201</p>
                 <p className="text-[13px] text-muted-foreground mt-0.5">Arrive 10–15 minutes early to find your seat.</p>
               </div>
               <Link

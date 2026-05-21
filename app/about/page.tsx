@@ -5,7 +5,7 @@ import { PageHeader } from '@/components/page-header'
 
 export const metadata = {
   title: 'About Us — Truth and Life Christian Church',
-  description: 'The story, mission, and convictions of Truth and Life Christian Church in Macon, Georgia.',
+  description: 'The story, mission, and convictions of Truth and Life Christian Church in Orion, Bataan.',
 }
 
 export default function AboutPage() {
@@ -17,7 +17,7 @@ export default function AboutPage() {
         <PageHeader
           label="Truth and Life Christian Church"
           title="About Our Church"
-          subtitle="A congregation of sinners saved by sovereign grace, gathered around the Word, and sent into Macon, Georgia with the gospel."
+          subtitle="A congregation of sinners saved by sovereign grace, gathered around the Word, and sent into Orion, Bataan with the gospel."
         />
 
         {/* Our Story */}
@@ -32,7 +32,7 @@ export default function AboutPage() {
               </div>
               <div className="lg:col-span-2 space-y-5">
                 <p className="text-[15px] text-foreground/75 leading-[1.75]">
-                  Truth and Life Christian Church was planted in 2008 by a small group of believers in Macon, Georgia who were united by a shared conviction: that the ordinary means of grace — preaching, prayer, and the Lord's Supper — are sufficient for the health and growth of the local church.
+                  Truth and Life Christian Church was planted in 2008 by a small group of believers in Orion, Bataan who were united by a shared conviction: that the ordinary means of grace — preaching, prayer, and the Lord's Supper — are sufficient for the health and growth of the local church.
                 </p>
                 <p className="text-[15px] text-foreground/75 leading-[1.75]">
                   Beginning with fifteen members in a rented school gymnasium, the congregation covenanted together under the Second London Baptist Confession of Faith, committed to week-by-week exposition of Scripture and the pastoral model of plural elder leadership described in the New Testament.
