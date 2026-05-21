@@ -5,25 +5,9 @@ import { headers } from 'next/headers'
 import { contactSchema, type ContactFormValues } from '@/lib/contact-schema'
 import { isRateLimited } from '@/lib/rate-limiter'
 
+export type { ContactFormValues }
+
 const resend = new Resend(process.env.RESEND_API_KEY)
-
-async function verifyTurnstile(token: string): Promise<boolean> {
-  const secret = process.env.TURNSTILE_SECRET_KEY
-  if (!secret) return true // skip verification when not configured (dev)
-
-  try {
-    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ secret, response: token }),
-      cache: 'no-store',
-    })
-    const data = (await res.json()) as { success: boolean }
-    return data.success === true
-  } catch {
-    return false
-  }
-}
 
 const SUBJECT_LABELS: Record<string, string> = {
   general: 'General Inquiry',
@@ -139,15 +123,7 @@ export async function submitContactForm(
     return { success: false, error: 'Please fix the errors below.', fieldErrors }
   }
 
-  const { name, email, phone, subject, message, turnstileToken } = parsed.data
-
-  const turnstileOk = await verifyTurnstile(turnstileToken)
-  if (!turnstileOk) {
-    return {
-      success: false,
-      error: 'Security check failed. Please refresh the page and try again.',
-    }
-  }
+  const { name, email, phone, subject, message } = parsed.data
 
   const contactEmail = process.env.CONTACT_EMAIL
   if (!contactEmail) {
@@ -155,9 +131,9 @@ export async function submitContactForm(
     return { success: false, error: 'Server configuration error. Please try again later.' }
   }
 
-  // Use verified domain in production: update RESEND_FROM_ADDRESS in .env.local
+  // Use a verified domain address in production via RESEND_FROM_ADDRESS
   // e.g. "Truth and Life <noreply@yourchurchdomain.org>"
-  // onboarding@resend.dev is for testing only (Resend shared domain)
+  // onboarding@resend.dev is Resend's shared test domain — for development only
   const fromAddress =
     process.env.RESEND_FROM_ADDRESS ?? 'Truth and Life Contact Form <onboarding@resend.dev>'
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
@@ -8,11 +8,8 @@ import { toast } from 'sonner'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/page-header'
-import { TurnstileWidget, type TurnstileHandle } from '@/components/turnstile-widget'
-import { clientContactSchema, type ContactFormInput } from '@/lib/contact-schema'
+import { contactSchema, type ContactFormValues } from '@/lib/contact-schema'
 import { submitContactForm } from './actions'
-
-const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ''
 
 export default function ContactPage() {
   const {
@@ -21,33 +18,24 @@ export default function ContactPage() {
     reset,
     formState: { errors, isSubmitting },
     setError,
-  } = useForm<ContactFormInput>({
-    resolver: zodResolver(clientContactSchema),
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactSchema),
     defaultValues: { name: '', email: '', phone: '', subject: '', message: '', consent: false },
   })
 
   const [submitted, setSubmitted] = useState(false)
-  const [turnstileToken, setTurnstileToken] = useState('')
-  const turnstileRef = useRef<TurnstileHandle>(null)
 
-  const onSubmit = async (data: ContactFormInput) => {
-    if (TURNSTILE_SITE_KEY && !turnstileToken) {
-      toast.error('Please complete the security check before submitting.')
-      return
-    }
-
-    const result = await submitContactForm({ ...data, turnstileToken })
+  const onSubmit = async (data: ContactFormValues) => {
+    const result = await submitContactForm(data)
 
     if (result.success) {
       setSubmitted(true)
       reset()
-      setTurnstileToken('')
-      turnstileRef.current?.reset()
       setTimeout(() => setSubmitted(false), 10_000)
     } else {
       if (result.fieldErrors) {
         for (const [field, message] of Object.entries(result.fieldErrors)) {
-          setError(field as keyof ContactFormInput, { message })
+          setError(field as keyof ContactFormValues, { message })
         }
       }
       toast.error(result.error ?? 'Something went wrong. Please try again.')
@@ -271,18 +259,6 @@ export default function ContactPage() {
                   {fieldError(errors.consent?.message)}
                 </div>
               </div>
-
-              {TURNSTILE_SITE_KEY && (
-                <div>
-                  <TurnstileWidget
-                    ref={turnstileRef}
-                    siteKey={TURNSTILE_SITE_KEY}
-                    onVerify={setTurnstileToken}
-                    onExpire={() => setTurnstileToken('')}
-                    onError={() => setTurnstileToken('')}
-                  />
-                </div>
-              )}
 
               <button
                 type="submit"

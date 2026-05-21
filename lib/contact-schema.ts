@@ -12,10 +12,6 @@ export const contactSchema = z.object({
   consent: z.boolean().refine((val) => val === true, {
     message: 'You must accept the privacy policy to continue',
   }),
-  turnstileToken: z.string(),
 })
 
-export const clientContactSchema = contactSchema.omit({ turnstileToken: true })
-
 export type ContactFormValues = z.infer<typeof contactSchema>
-export type ContactFormInput = z.infer<typeof clientContactSchema>
