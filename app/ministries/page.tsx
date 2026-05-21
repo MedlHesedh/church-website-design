@@ -65,14 +65,14 @@ const ministries = [
     description:
       'Men gather early on Tuesday mornings for Bible study, prayer, and mutual accountability. Breakfast is provided. This is a place for iron to sharpen iron — where brothers speak the truth in love and pursue holiness together.',
   },
-  {
-    category: 'Women',
-    name: 'Women\'s Bible Study',
-    schedule: 'Wednesdays · 10:00 AM',
-    contact: 'Sarah Whitfield',
-    description:
-      'Inductive Bible study and discipleship for women of all ages. We work through books of the Bible with attention to careful interpretation and application. A companion evening session is planned for women who work during the day.',
-  },
+  // {
+  //   category: 'Women',
+  //   name: 'Women\'s Bible Study',
+  //   schedule: 'Wednesdays · 10:00 AM',
+  //   contact: 'Sarah Whitfield',
+  //   description:
+  //     'Inductive Bible study and discipleship for women of all ages. We work through books of the Bible with attention to careful interpretation and application. A companion evening session is planned for women who work during the day.',
+  // },
   {
     category: 'Pastoral Care',
     name: 'Biblical Counseling',

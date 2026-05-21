@@ -22,8 +22,8 @@ Please fill in the answers below and return this document. All of this informati
 
 - **Sunday School time:**
 - **Sunday Morning Worship time:**
-- **Sunday Prayer Meeting / Evening Service time:** (or is there one?)
-- **Wednesday Prayer Meeting time:** (or is there one?)
+- **Sunday Prayer Meeting / Friday Service time:** (or is there one?)
+<!-- - **Wednesday Prayer Meeting time:** (or is there one?) -->
 - **Any other regular gatherings:**
 
 ---
