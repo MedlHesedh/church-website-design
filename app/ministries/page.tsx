@@ -20,7 +20,7 @@ const ministries = [
   {
     category: 'Family',
     name: 'Children\'s Ministry',
-    schedule: 'Sundays · 10:30 AM',
+    schedule: 'Sundays · 8:00 AM',
     contact: 'Deacon Robert Kimball',
     description:
       'Gospel-centered instruction for children from birth through Grade 5. Nursery care is provided for infants and toddlers. Older children receive age-appropriate Bible teaching during the morning worship service.',

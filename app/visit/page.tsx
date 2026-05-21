@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: 'What happens with my children?',
-    a: 'Nursery care is available for infants and toddlers. Children in Kindergarten through Grade 5 attend Children\'s Church at 10:30 AM. Older children are encouraged to remain in the service with their families.',
+    a: 'Nursery care is available for infants and toddlers. Children in Kindergarten through Grade 5 attend Children\'s Church at 8:00 AM. Older children are encouraged to remain in the service with their families.',
   },
   {
     q: 'How do I become a member?',
@@ -91,7 +91,7 @@ export default function VisitPage() {
                 <div className="space-y-0 border border-border">
                   {[
                     { label: 'Sunday School', time: '9:15 AM', note: 'All ages · Classrooms' },
-                    { label: 'Morning Worship', time: '10:30 AM', note: 'Main Service · Sanctuary (~80 min)' },
+                    { label: 'Morning Worship', time: '8:00 AM', note: 'Main Service · Sanctuary (~80 min)' },
                     { label: 'Prayer Meeting / Evening Service', time: '6:00 PM', note: 'Bible Study & Prayer · Sanctuary' },
                     { label: 'Wednesday Prayer', time: '7:00 PM', note: 'Corporate Prayer · Fellowship Hall' },
                   ].map((service, i) => (

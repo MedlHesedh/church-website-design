@@ -10,7 +10,7 @@ export const metadata = {
 
 const regularServices = [
   { day: 'Sunday', time: '9:15 AM', title: 'Sunday School', location: 'Classrooms' },
-  { day: 'Sunday', time: '10:30 AM', title: 'Morning Worship', location: 'Sanctuary' },
+  { day: 'Sunday', time: '8:00 AM', title: 'Morning Worship', location: 'Sanctuary' },
   { day: 'Sunday', time: '6:00 PM', title: 'Prayer Meeting / Evening Service', location: 'Sanctuary' },
   { day: 'Wednesday', time: '7:00 PM', title: 'Prayer Meeting', location: 'Fellowship Hall' },
 ]
