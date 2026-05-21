@@ -92,7 +92,7 @@ export default function VisitPage() {
                   {[
                     { label: 'Sunday School', time: '9:15 AM', note: 'All ages · Classrooms' },
                     { label: 'Morning Worship', time: '10:30 AM', note: 'Main Service · Sanctuary (~80 min)' },
-                    { label: 'Evening Service', time: '6:00 PM', note: 'Bible Study & Prayer · Sanctuary' },
+                    { label: 'Prayer Meeting / Evening Service', time: '6:00 PM', note: 'Bible Study & Prayer · Sanctuary' },
                     { label: 'Wednesday Prayer', time: '7:00 PM', note: 'Corporate Prayer · Fellowship Hall' },
                   ].map((service, i) => (
                     <div key={i} className="bg-card border-b border-border last:border-b-0 px-6 py-5 flex items-center justify-between">

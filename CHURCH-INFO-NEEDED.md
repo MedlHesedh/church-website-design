@@ -1,4 +1,5 @@
 # Church Information Needed
+
 ## Truth and Life Christian Church — Website Content Gathering
 
 Please fill in the answers below and return this document. All of this information will be used to replace the placeholder content on the church website.
@@ -21,7 +22,7 @@ Please fill in the answers below and return this document. All of this informati
 
 - **Sunday School time:**
 - **Sunday Morning Worship time:**
-- **Sunday Evening Service time:** (or is there one?)
+- **Sunday Prayer Meeting / Evening Service time:** (or is there one?)
 - **Wednesday Prayer Meeting time:** (or is there one?)
 - **Any other regular gatherings:**
 
@@ -32,6 +33,7 @@ Please fill in the answers below and return this document. All of this informati
 For **each pastor and elder**, please provide:
 
 ### Pastor / Elder 1
+
 - Full name:
 - Title: (e.g., Senior Pastor, Teaching Elder, Pastoral Elder)
 - Educational background: (degrees, institutions)
@@ -41,6 +43,7 @@ For **each pastor and elder**, please provide:
 - Email address:
 
 ### Pastor / Elder 2
+
 - Full name:
 - Title:
 - Educational background:
@@ -48,13 +51,14 @@ For **each pastor and elder**, please provide:
 - Email address:
 
 ### Pastor / Elder 3
+
 - Full name:
 - Title:
 - Educational background:
 - Brief bio:
 - Email address:
 
-*(Add more as needed)*
+_(Add more as needed)_
 
 ---
 
@@ -63,18 +67,20 @@ For **each pastor and elder**, please provide:
 For **each deacon**, please provide:
 
 ### Deacon 1
+
 - Full name:
 - Title / Area of service: (e.g., Deacon of Finance, Deacon of Benevolence)
 - Brief bio (2–3 sentences): occupation, how long a member, what they oversee
 - Email address:
 
 ### Deacon 2
+
 - Full name:
 - Title / Area of service:
 - Brief bio:
 - Email address:
 
-*(Add more as needed)*
+_(Add more as needed)_
 
 ---
 
@@ -125,13 +131,13 @@ Please provide a short paragraph (3–10 sentences) for each doctrine below. If 
 
 For **each active ministry**, please provide:
 
-| Ministry Name | Who it serves | Meeting schedule | Contact person | 2–3 sentence description |
-|---|---|---|---|---|
-| (e.g., Adult Sunday School) | (Adults) | (Sundays 9:15 AM) | (Elder's name) | (Description) |
-| | | | | |
-| | | | | |
+| Ministry Name               | Who it serves | Meeting schedule  | Contact person | 2–3 sentence description |
+| --------------------------- | ------------- | ----------------- | -------------- | ------------------------ |
+| (e.g., Adult Sunday School) | (Adults)      | (Sundays 9:15 AM) | (Elder's name) | (Description)            |
+|                             |               |                   |                |                          |
+|                             |               |                   |                |                          |
 
-*(Add as many rows as needed)*
+_(Add as many rows as needed)_
 
 ---
 
@@ -140,10 +146,10 @@ For **each active ministry**, please provide:
 For each event you want listed on the website:
 
 | Event Name | Date | Day of Week | Time | Location | Category | Description (2–3 sentences) |
-|---|---|---|---|---|---|---|
-| | | | | | | |
+| ---------- | ---- | ----------- | ---- | -------- | -------- | --------------------------- |
+|            |      |             |      |          |          |                             |
 
-*(Categories might be: Fellowship, Children's Ministry, Men's Ministry, Women's Ministry, Members' Meeting, Training, Outreach, Lord's Supper, etc.)*
+_(Categories might be: Fellowship, Children's Ministry, Men's Ministry, Women's Ministry, Members' Meeting, Training, Outreach, Lord's Supper, etc.)_
 
 ---
 
@@ -152,8 +158,8 @@ For each event you want listed on the website:
 For each sermon you want displayed (suggest 6 most recent):
 
 | Date | Sermon Title | Scripture Passage | Series Name | Preacher | YouTube Video ID (if uploaded) | 2–3 sentence description |
-|---|---|---|---|---|---|---|
-| | | | | | | |
+| ---- | ------------ | ----------------- | ----------- | -------- | ------------------------------ | ------------------------ |
+|      |              |                   |             |          |                                |                          |
 
 ---
 
@@ -196,4 +202,4 @@ For each sermon you want displayed (suggest 6 most recent):
 
 ---
 
-*Return this completed document to the web team and the content will be updated on the site.*
+_Return this completed document to the web team and the content will be updated on the site._
