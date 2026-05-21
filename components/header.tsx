@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
@@ -25,12 +26,15 @@ export function Header() {
       <nav className="max-w-6xl mx-auto px-6 lg:px-8 h-[68px] flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
-          <div className="w-8 h-8 bg-primary flex items-center justify-center">
-            <svg viewBox="0 0 24 24" className="w-4 h-4 text-primary-foreground" fill="currentColor">
-              <path d="M11 2v7H4v2h7v11h2V11h7V9h-7V2z" />
-            </svg>
-          </div>
+        <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0">
+          <Image
+            src="/Truth and Life Christian Church.png"
+            alt="Truth and Life Christian Church"
+            width={44}
+            height={44}
+            className="rounded-full drop-shadow-sm"
+            priority
+          />
           <div className="leading-tight">
             <span className="block text-sm font-semibold font-serif text-primary tracking-tight">
               Truth &amp; Life

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export function Footer() {
   return (
@@ -25,13 +26,16 @@ export function Footer() {
           {/* Church Identity */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-7 h-7 bg-primary-foreground/10 flex items-center justify-center">
-                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-primary-foreground/70" fill="currentColor">
-                  <path d="M11 2v7H4v2h7v11h2V11h7V9h-7V2z" />
-                </svg>
-              </div>
+              <Image
+                src="/Truth and Life Christian Church.png"
+                alt="Truth and Life Christian Church"
+                width={48}
+                height={48}
+                className="rounded-full ring-2 ring-primary-foreground/20"
+              />
               <span className="text-sm font-semibold font-serif text-primary-foreground tracking-tight">
-                Truth &amp; Life Christian Church
+                Truth &amp; Life<br />
+                <span className="text-[11px] font-normal tracking-[0.08em] text-primary-foreground/60">Christian Church</span>
               </span>
             </div>
             <p className="text-[13px] text-primary-foreground/60 leading-relaxed mb-5">
