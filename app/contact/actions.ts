@@ -155,23 +155,28 @@ export async function submitContactForm(
     return { success: false, error: 'Server configuration error. Please try again later.' }
   }
 
-  try {
-    const { error } = await resend.emails.send({
-      from: 'Truth and Life Contact Form <onboarding@resend.dev>',
-      to: contactEmail,
-      replyTo: email,
-      subject: `[Contact] ${SUBJECT_LABELS[subject] ?? subject} — ${name}`,
-      html: buildEmailHtml(name, email, phone, subject, message),
-    })
+  // Use verified domain in production: update RESEND_FROM_ADDRESS in .env.local
+  // e.g. "Truth and Life <noreply@yourchurchdomain.org>"
+  // onboarding@resend.dev is for testing only (Resend shared domain)
+  const fromAddress =
+    process.env.RESEND_FROM_ADDRESS ?? 'Truth and Life Contact Form <onboarding@resend.dev>'
 
-    if (error) {
-      console.error('Resend error:', error)
-      return { success: false, error: 'Failed to deliver your message. Please try again later.' }
-    }
+  const idempotencyKey = `contact-form/${ip}-${Date.now()}`
 
-    return { success: true }
-  } catch (err) {
-    console.error('Email send failed:', err)
-    return { success: false, error: 'An unexpected error occurred. Please try again.' }
+  const { data, error } = await resend.emails.send({
+    from: fromAddress,
+    to: contactEmail,
+    replyTo: email,
+    subject: `[Contact] ${SUBJECT_LABELS[subject] ?? subject} — ${name}`,
+    html: buildEmailHtml(name, email, phone, subject, message),
+    idempotencyKey,
+  })
+
+  if (error) {
+    console.error('Resend error:', error)
+    return { success: false, error: 'Failed to deliver your message. Please try again later.' }
   }
+
+  console.log('Email sent:', data?.id)
+  return { success: true }
 }
