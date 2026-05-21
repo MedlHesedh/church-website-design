@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import { Inter, Source_Serif_4, Geist_Mono } from 'next/font/google'
+import { Toaster } from 'sonner'
 import './globals.css'
 
 const inter = Inter({
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${inter.variable} ${sourceSerif4.variable} ${geistMono.variable}`}>
       <body className="font-sans antialiased bg-background text-foreground">
         {children}
+        <Toaster position="top-right" richColors closeButton />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

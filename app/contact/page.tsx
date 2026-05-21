@@ -1,38 +1,64 @@
 'use client'
 
+import { useRef, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { toast } from 'sonner'
+
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/page-header'
-import { useState } from 'react'
+import { TurnstileWidget, type TurnstileHandle } from '@/components/turnstile-widget'
+import { clientContactSchema, type ContactFormInput } from '@/lib/contact-schema'
+import { submitContactForm } from './actions'
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ''
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+    setError,
+  } = useForm<ContactFormInput>({
+    resolver: zodResolver(clientContactSchema),
+    defaultValues: { name: '', email: '', phone: '', subject: '', message: '', consent: false },
   })
+
   const [submitted, setSubmitted] = useState(false)
+  const [turnstileToken, setTurnstileToken] = useState('')
+  const turnstileRef = useRef<TurnstileHandle>(null)
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    // TODO: Integrate with email service (Resend, SendGrid, etc.)
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 6000)
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
-  }
+  const onSubmit = async (data: ContactFormInput) => {
+    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+      toast.error('Please complete the security check before submitting.')
+      return
+    }
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
+    const result = await submitContactForm({ ...data, turnstileToken })
+
+    if (result.success) {
+      setSubmitted(true)
+      reset()
+      setTurnstileToken('')
+      turnstileRef.current?.reset()
+      setTimeout(() => setSubmitted(false), 10_000)
+    } else {
+      if (result.fieldErrors) {
+        for (const [field, message] of Object.entries(result.fieldErrors)) {
+          setError(field as keyof ContactFormInput, { message })
+        }
+      }
+      toast.error(result.error ?? 'Something went wrong. Please try again.')
+    }
   }
 
   const inputClass =
     'w-full px-4 py-3 border border-border bg-card text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring transition-colors'
+
+  const fieldError = (msg?: string) =>
+    msg ? <p className="mt-1.5 text-[12px] text-red-500">{msg}</p> : null
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -69,8 +95,13 @@ export default function ContactPage() {
                   sublabel: 'We respond within one business day',
                 },
               ].map((item, i) => (
-                <div key={i} className="bg-card border-b md:border-b-0 md:border-r border-border last:border-0 p-7">
-                  <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-3">{item.label}</p>
+                <div
+                  key={i}
+                  className="bg-card border-b md:border-b-0 md:border-r border-border last:border-0 p-7"
+                >
+                  <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-3">
+                    {item.label}
+                  </p>
                   {item.link ? (
                     <a
                       href={item.link}
@@ -91,7 +122,9 @@ export default function ContactPage() {
             {/* Map Placeholder */}
             <div className="bg-secondary border border-border h-64 flex items-center justify-center mb-10">
               <div className="text-center">
-                <p className="text-[13px] text-muted-foreground mb-2">Map · 4821 Covenant Way, Macon, GA 31201</p>
+                <p className="text-[13px] text-muted-foreground mb-2">
+                  Map · 4821 Covenant Way, Macon, GA 31201
+                </p>
                 <a
                   href="https://maps.google.com/?q=4821+Covenant+Way+Macon+GA+31201"
                   target="_blank"
@@ -108,7 +141,9 @@ export default function ContactPage() {
         {/* Contact Form */}
         <section className="py-20 md:py-24 bg-secondary">
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Write to Us</p>
+            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">
+              Write to Us
+            </p>
             <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-10 leading-snug">
               Send a Message
             </h2>
@@ -117,72 +152,77 @@ export default function ContactPage() {
               <div className="mb-8 border border-accent/30 bg-accent/5 p-5">
                 <p className="font-medium text-foreground text-sm">Message received — thank you.</p>
                 <p className="text-[13px] text-foreground/65 mt-1">
-                  We will respond within one business day.
+                  Thank you for contacting Truth and Life Christian Church. Our team will respond as
+                  soon as possible.
                 </p>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="bg-card border border-border p-8 md:p-10 space-y-6">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
+              className="bg-card border border-border p-8 md:p-10 space-y-6"
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
-                  <label htmlFor="name" className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2"
+                  >
                     Your Name <span className="text-accent">*</span>
                   </label>
                   <input
                     type="text"
                     id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
                     placeholder="John Smith"
                     className={inputClass}
+                    {...register('name')}
                   />
+                  {fieldError(errors.name?.message)}
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2"
+                  >
                     Email Address <span className="text-accent">*</span>
                   </label>
                   <input
                     type="email"
                     id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
                     placeholder="john@example.com"
                     className={inputClass}
+                    {...register('email')}
                   />
+                  {fieldError(errors.email?.message)}
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
-                  <label htmlFor="phone" className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2">
+                  <label
+                    htmlFor="phone"
+                    className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2"
+                  >
                     Phone Number
                   </label>
                   <input
                     type="tel"
                     id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
                     placeholder="(555) 123-4567"
                     className={inputClass}
+                    {...register('phone')}
                   />
+                  {fieldError(errors.phone?.message)}
                 </div>
                 <div>
-                  <label htmlFor="subject" className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2">
+                  <label
+                    htmlFor="subject"
+                    className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2"
+                  >
                     Subject <span className="text-accent">*</span>
                   </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className={inputClass}
-                  >
+                  <select id="subject" className={inputClass} {...register('subject')}>
                     <option value="">Select a topic…</option>
                     <option value="general">General Inquiry</option>
                     <option value="prayer">Prayer Request</option>
@@ -192,42 +232,64 @@ export default function ContactPage() {
                     <option value="volunteer">Serving &amp; Volunteering</option>
                     <option value="other">Other</option>
                   </select>
+                  {fieldError(errors.subject?.message)}
                 </div>
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2"
+                >
                   Message <span className="text-accent">*</span>
                 </label>
                 <textarea
                   id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
                   rows={6}
                   placeholder="How can we help you?"
                   className={`${inputClass} resize-none`}
+                  {...register('message')}
                 />
+                {fieldError(errors.message?.message)}
               </div>
 
               <div className="flex items-start gap-3">
                 <input
                   type="checkbox"
                   id="privacy"
-                  required
                   className="mt-0.5 w-4 h-4 border border-border accent-primary"
+                  {...register('consent')}
                 />
-                <label htmlFor="privacy" className="text-[13px] text-foreground/60 leading-relaxed">
-                  I understand that this information will be used to respond to my inquiry and may be shared with the pastoral staff of Truth and Life Christian Church.
-                </label>
+                <div>
+                  <label
+                    htmlFor="privacy"
+                    className="text-[13px] text-foreground/60 leading-relaxed"
+                  >
+                    I understand that this information will be used to respond to my inquiry and may
+                    be shared with the pastoral staff of Truth and Life Christian Church.
+                  </label>
+                  {fieldError(errors.consent?.message)}
+                </div>
               </div>
+
+              {TURNSTILE_SITE_KEY && (
+                <div>
+                  <TurnstileWidget
+                    ref={turnstileRef}
+                    siteKey={TURNSTILE_SITE_KEY}
+                    onVerify={setTurnstileToken}
+                    onExpire={() => setTurnstileToken('')}
+                    onError={() => setTurnstileToken('')}
+                  />
+                </div>
+              )}
 
               <button
                 type="submit"
-                className="w-full sm:w-auto px-8 py-3 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 transition-colors"
+                disabled={isSubmitting}
+                className="w-full sm:w-auto px-8 py-3 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Send Message
+                {isSubmitting ? 'Sending…' : 'Send Message'}
               </button>
             </form>
           </div>
@@ -238,26 +300,39 @@ export default function ContactPage() {
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-border">
               <div className="bg-card border-b md:border-b-0 md:border-r border-border p-8 md:p-10">
-                <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-3">Prayer</p>
-                <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">Submit a Prayer Request</h3>
+                <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-3">
+                  Prayer
+                </p>
+                <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">
+                  Submit a Prayer Request
+                </h3>
                 <p className="text-[14px] text-foreground/65 leading-relaxed mb-5">
-                  Use the contact form above and select &ldquo;Prayer Request&rdquo; as your subject. Our elders and pastoral care team will bring your request before the Lord in prayer and may follow up if you request it.
+                  Use the contact form above and select &ldquo;Prayer Request&rdquo; as your
+                  subject. Our elders and pastoral care team will bring your request before the Lord
+                  in prayer and may follow up if you request it.
                 </p>
                 <p className="text-[14px] text-foreground/65 leading-relaxed">
-                  Prayer requests shared with the pastoral team are held in strict confidence unless you indicate otherwise.
+                  Prayer requests shared with the pastoral team are held in strict confidence unless
+                  you indicate otherwise.
                 </p>
               </div>
               <div className="bg-primary text-primary-foreground p-8 md:p-10">
-                <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-3">Pastoral Care</p>
+                <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-3">
+                  Pastoral Care
+                </p>
                 <h3 className="font-serif text-2xl font-semibold text-primary-foreground mb-4">
                   Speak with a Pastor
                 </h3>
                 <p className="text-[14px] text-primary-foreground/65 leading-relaxed mb-5">
-                  If you are walking through a season of grief, crisis, or spiritual struggle and would like to speak with one of our pastors, please call the church office or send a message. We are here to help.
+                  If you are walking through a season of grief, crisis, or spiritual struggle and
+                  would like to speak with one of our pastors, please call the church office or send
+                  a message. We are here to help.
                 </p>
                 <blockquote className="border-l-2 border-accent pl-4 mt-6">
                   <p className="text-[13px] text-primary-foreground/55 italic leading-relaxed">
-                    &ldquo;Is anyone among you suffering? Let him pray. Is anyone cheerful? Let him sing praise. Is anyone among you sick? Let him call for the elders of the church.&rdquo;
+                    &ldquo;Is anyone among you suffering? Let him pray. Is anyone cheerful? Let him
+                    sing praise. Is anyone among you sick? Let him call for the elders of the
+                    church.&rdquo;
                   </p>
                   <cite className="text-[10px] font-medium tracking-[0.1em] uppercase text-accent not-italic block mt-2">
                     James 5:13–14
