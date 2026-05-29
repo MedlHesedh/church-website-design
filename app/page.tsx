@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
+import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/motion'
 
 const recentSermons = [
   {
@@ -36,66 +37,75 @@ export default function Home() {
         {/* ── Hero ─────────────────────────────────────────── */}
         <section className="bg-primary text-primary-foreground">
           <div className="max-w-6xl mx-auto px-6 lg:px-8 py-24 md:py-36">
-            <p className="text-[11px] font-medium tracking-[0.15em] uppercase text-accent mb-6">
-              Truth &amp; Life Christian Church Main · Orion, Bataan
-            </p>
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light leading-[1.08] mb-8 max-w-4xl">
-              Gathered Around the Word.{' '}
-              <span className="italic">Sent Into the World.</span>
-            </h1>
-            <p className="text-base md:text-lg font-light text-primary-foreground/70 max-w-xl leading-relaxed mb-5">
-              A Reformed Southern Baptist congregation devoted to the expository preaching of Scripture, biblical discipleship, and gospel-centered community.
-            </p>
-            <blockquote className="border-l-2 border-accent pl-4 mb-10">
-              <p className="text-sm text-primary-foreground/55 italic">
-                &ldquo;For I decided to know nothing among you except Jesus Christ and him crucified.&rdquo; — 1 Corinthians 2:2
+            <FadeIn delay={0}>
+              <p className="text-[11px] font-medium tracking-[0.15em] uppercase text-accent mb-6">
+                Truth &amp; Life Christian Church Main · Orion, Bataan
               </p>
-            </blockquote>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/visit"
-                className="inline-flex items-center justify-center px-7 py-3 bg-accent text-white text-sm font-medium tracking-wide hover:bg-accent/90 transition-colors"
-              >
-                Plan Your Visit
-              </Link>
-              <Link
-                href="/messages"
-                className="inline-flex items-center justify-center px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 transition-colors"
-              >
-                Listen to Sermons
-              </Link>
-            </div>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-light leading-[1.08] mb-8 max-w-4xl">
+                Gathered Around the Word.{' '}
+                <span className="italic">Sent Into the World.</span>
+              </h1>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <p className="text-base md:text-lg font-light text-primary-foreground/70 max-w-xl leading-relaxed mb-5">
+                A Reformed Southern Baptist congregation devoted to the expository preaching of Scripture, biblical discipleship, and gospel-centered community.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.3}>
+              <blockquote className="border-l-2 border-accent pl-4 mb-10">
+                <p className="text-sm text-primary-foreground/55 italic">
+                  &ldquo;For I decided to know nothing among you except Jesus Christ and him crucified.&rdquo; — 1 Corinthians 2:2
+                </p>
+              </blockquote>
+            </FadeIn>
+            <FadeIn delay={0.4}>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/visit"
+                  className="inline-flex items-center justify-center px-7 py-3 bg-accent text-white text-sm font-medium tracking-wide hover:bg-accent/90 active:scale-[0.97] transition-all duration-150"
+                >
+                  Plan Your Visit
+                </Link>
+                <Link
+                  href="/messages"
+                  className="inline-flex items-center justify-center px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 active:scale-[0.97] transition-all duration-150"
+                >
+                  Listen to Sermons
+                </Link>
+              </div>
+            </FadeIn>
           </div>
         </section>
 
         {/* ── Service Times ────────────────────────────────── */}
         <section className="py-20 md:py-24 bg-secondary">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <div className="max-w-xs mb-10">
+            <FadeIn className="max-w-xs mb-10">
               <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Lord&rsquo;s Day</p>
               <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground leading-snug">
                 When We Gather
               </h2>
-            </div>
+            </FadeIn>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-border bg-card">
+            <FadeInStagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-border bg-card">
               {[
                 { label: 'Sunday School', time: '9:15', period: 'AM', note: 'All ages · Classrooms' },
                 { label: 'Morning Worship', time: '8:00', period: 'AM', note: 'Main Service · Sanctuary' },
                 { label: 'Prayer Meeting', time: '6:00', period: 'PM', note: 'Bible Study & Prayer' },
-                // { label: 'Wednesday Prayer', time: '7:00', period: 'PM', note: 'Corporate Prayer Meeting' },
               ].map((service, i) => (
-                <div key={i} className="p-8 border-b sm:border-b-0 sm:border-r border-border last:border-0">
+                <FadeInStaggerItem key={i} className="p-8 border-b sm:border-b-0 sm:border-r border-border last:border-0">
                   <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-3">{service.label}</p>
                   <p className="font-serif text-4xl font-light text-foreground mb-1">
                     {service.time} <span className="text-xl text-muted-foreground font-normal">{service.period}</span>
                   </p>
                   <p className="text-[13px] text-muted-foreground mt-2">{service.note}</p>
-                </div>
+                </FadeInStaggerItem>
               ))}
-            </div>
+            </FadeInStagger>
 
-            <div className="mt-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-card border border-border px-7 py-5">
+            <FadeIn className="mt-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-card border border-border px-7 py-5">
               <div>
                 <p className="text-sm font-medium text-foreground">4821 Covenant Way, Orion, Bataan 31201</p>
                 <p className="text-[13px] text-muted-foreground mt-0.5">Arrive 10–15 minutes early to find your seat.</p>
@@ -106,7 +116,7 @@ export default function Home() {
               >
                 Get Directions &rarr;
               </Link>
-            </div>
+            </FadeIn>
           </div>
         </section>
 
@@ -114,7 +124,7 @@ export default function Home() {
         <section className="py-20 md:py-24 bg-background">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-              <div>
+              <FadeIn>
                 <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Our Convictions</p>
                 <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground leading-snug mb-6">
                   Rooted in Scripture.<br />Reformed in Doctrine.
@@ -128,20 +138,20 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link
                     href="/about"
-                    className="inline-flex items-center justify-center px-6 py-2.5 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 transition-colors"
+                    className="inline-flex items-center justify-center px-6 py-2.5 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 active:scale-[0.97] transition-all duration-150"
                   >
                     About Our Church
                   </Link>
                   <Link
                     href="/faith"
-                    className="inline-flex items-center justify-center px-6 py-2.5 border border-border text-foreground text-sm font-medium hover:bg-secondary transition-colors"
+                    className="inline-flex items-center justify-center px-6 py-2.5 border border-border text-foreground text-sm font-medium hover:bg-secondary active:scale-[0.97] transition-all duration-150"
                   >
                     What We Believe
                   </Link>
                 </div>
-              </div>
+              </FadeIn>
 
-              <div className="space-y-0 border border-border">
+              <FadeInStagger className="space-y-0 border border-border" delay={0.1}>
                 {[
                   {
                     label: 'Expository Preaching',
@@ -160,12 +170,12 @@ export default function Home() {
                     body: 'We give, send, and go. We support international missionaries through the IMB and labor to reach our own neighbors in Macon with the saving message of Christ.',
                   },
                 ].map((item, i) => (
-                  <div key={i} className="px-7 py-6 border-b border-border last:border-b-0">
+                  <FadeInStaggerItem key={i} className="px-7 py-6 border-b border-border last:border-b-0">
                     <h3 className="font-serif text-lg font-semibold text-foreground mb-2">{item.label}</h3>
                     <p className="text-[14px] text-foreground/65 leading-relaxed">{item.body}</p>
-                  </div>
+                  </FadeInStaggerItem>
                 ))}
-              </div>
+              </FadeInStagger>
             </div>
           </div>
         </section>
@@ -173,7 +183,7 @@ export default function Home() {
         {/* ── Recent Sermons ────────────────────────────────── */}
         <section className="py-20 md:py-24 bg-secondary">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+            <FadeIn className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
               <div>
                 <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">From the Pulpit</p>
                 <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground leading-snug">
@@ -183,18 +193,16 @@ export default function Home() {
               <Link href="/messages" className="text-sm font-medium text-primary hover:text-accent transition-colors whitespace-nowrap">
                 View All Sermons &rarr;
               </Link>
-            </div>
+            </FadeIn>
 
-            <div className="space-y-0 border border-border bg-card">
+            <FadeInStagger className="space-y-0 border border-border bg-card">
               {recentSermons.map((sermon, i) => (
-                <article key={i} className="group border-b border-border last:border-b-0">
-                  <div className="flex flex-col sm:flex-row">
-                    {/* Date + Series marker */}
+                <FadeInStaggerItem key={i} className="border-b border-border last:border-b-0">
+                  <article className="group flex flex-col sm:flex-row">
                     <div className="sm:w-48 px-7 py-6 border-b sm:border-b-0 sm:border-r border-border bg-secondary/60 flex sm:flex-col justify-between sm:justify-start gap-2 flex-shrink-0">
                       <p className="text-[11px] font-medium tracking-[0.1em] uppercase text-accent">{sermon.series}</p>
                       <p className="text-[12px] text-muted-foreground">{sermon.date}</p>
                     </div>
-                    {/* Content */}
                     <div className="flex-1 px-7 py-6">
                       <h3 className="font-serif text-xl font-semibold text-foreground mb-2 leading-snug group-hover:text-primary transition-colors">
                         {sermon.title}
@@ -205,7 +213,6 @@ export default function Home() {
                         {sermon.passage}
                       </p>
                     </div>
-                    {/* Watch link */}
                     <div className="px-7 py-6 flex items-center justify-start sm:justify-end flex-shrink-0">
                       <Link href="/messages" className="inline-flex items-center gap-1.5 text-[13px] font-medium text-primary hover:text-accent transition-colors">
                         <span className="w-6 h-6 bg-primary/10 flex items-center justify-center">
@@ -216,17 +223,17 @@ export default function Home() {
                         Watch
                       </Link>
                     </div>
-                  </div>
-                </article>
+                  </article>
+                </FadeInStaggerItem>
               ))}
-            </div>
+            </FadeInStagger>
           </div>
         </section>
 
         {/* ── Gospel CTA ───────────────────────────────────── */}
         <section className="py-20 md:py-24 bg-primary text-primary-foreground">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <div className="max-w-3xl">
+            <FadeIn className="max-w-3xl">
               <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-5">New to the Church?</p>
               <h2 className="font-serif text-4xl md:text-5xl font-light leading-[1.1] mb-6">
                 We&rsquo;d love to<br />
@@ -243,18 +250,18 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/visit"
-                  className="inline-flex items-center justify-center px-7 py-3 bg-accent text-white text-sm font-medium tracking-wide hover:bg-accent/90 transition-colors"
+                  className="inline-flex items-center justify-center px-7 py-3 bg-accent text-white text-sm font-medium tracking-wide hover:bg-accent/90 active:scale-[0.97] transition-all duration-150"
                 >
                   Plan Your First Visit
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 transition-colors"
+                  className="inline-flex items-center justify-center px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 active:scale-[0.97] transition-all duration-150"
                 >
                   Ask Us a Question
                 </Link>
               </div>
-            </div>
+            </FadeIn>
           </div>
         </section>
 

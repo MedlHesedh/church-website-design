@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/page-header'
+import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/motion'
 
 export const metadata = {
   title: 'Ministries — Truth and Life Christian Church',
@@ -65,14 +66,6 @@ const ministries = [
     description:
       'Men gather early on Tuesday mornings for Bible study, prayer, and mutual accountability. Breakfast is provided. This is a place for iron to sharpen iron — where brothers speak the truth in love and pursue holiness together.',
   },
-  // {
-  //   category: 'Women',
-  //   name: 'Women\'s Bible Study',
-  //   schedule: 'Wednesdays · 10:00 AM',
-  //   contact: 'Sarah Whitfield',
-  //   description:
-  //     'Inductive Bible study and discipleship for women of all ages. We work through books of the Bible with attention to careful interpretation and application. A companion evening session is planned for women who work during the day.',
-  // },
   {
     category: 'Pastoral Care',
     name: 'Biblical Counseling',
@@ -82,8 +75,6 @@ const ministries = [
       'Certified biblical counselors are available to walk with members and attenders through seasons of grief, conflict, anxiety, marriage difficulty, and other trials. All counseling is anchored in Scripture and the grace of the gospel.',
   },
 ]
-
-const categories = ['Lord\'s Day Worship', 'Family', 'Youth', 'Men', 'Women', 'Outreach', 'Pastoral Care']
 
 export default function MinistriesPage() {
   return (
@@ -101,7 +92,7 @@ export default function MinistriesPage() {
         <section className="py-20 md:py-24 bg-background">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-              <div>
+              <FadeIn>
                 <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Our Philosophy</p>
                 <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground leading-snug mb-6">
                   Ministry from the Inside Out
@@ -114,20 +105,22 @@ export default function MinistriesPage() {
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-6 py-2.5 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-2.5 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 active:scale-[0.97] transition-all duration-150"
                 >
                   Talk to a Pastor
                 </Link>
-              </div>
+              </FadeIn>
 
-              <blockquote className="border-l-2 border-accent pl-8 py-2">
-                <p className="font-serif text-2xl md:text-3xl font-light italic text-foreground leading-relaxed mb-5">
-                  &ldquo;And he gave the apostles, the prophets, the evangelists, the shepherds and teachers, to equip the saints for the work of ministry, for building up the body of Christ.&rdquo;
-                </p>
-                <cite className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent not-italic">
-                  Ephesians 4:11–12
-                </cite>
-              </blockquote>
+              <FadeIn delay={0.15}>
+                <blockquote className="border-l-2 border-accent pl-8 py-2">
+                  <p className="font-serif text-2xl md:text-3xl font-light italic text-foreground leading-relaxed mb-5">
+                    &ldquo;And he gave the apostles, the prophets, the evangelists, the shepherds and teachers, to equip the saints for the work of ministry, for building up the body of Christ.&rdquo;
+                  </p>
+                  <cite className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent not-italic">
+                    Ephesians 4:11–12
+                  </cite>
+                </blockquote>
+              </FadeIn>
             </div>
           </div>
         </section>
@@ -135,14 +128,16 @@ export default function MinistriesPage() {
         {/* Ministry Grid */}
         <section className="py-20 md:py-24 bg-secondary">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">All Areas</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-10 max-w-md leading-snug">
-              Our Ministry Areas
-            </h2>
+            <FadeIn className="mb-10">
+              <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">All Areas</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground max-w-md leading-snug">
+                Our Ministry Areas
+              </h2>
+            </FadeIn>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-border">
+            <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-border">
               {ministries.map((ministry, i) => (
-                <div key={i} className="bg-card border-b md:border-r border-border p-7 flex flex-col">
+                <FadeInStaggerItem key={i} className="bg-card border-b md:border-r border-border p-7 flex flex-col">
                   <div>
                     <p className="text-[10px] font-medium tracking-[0.12em] uppercase text-accent mb-1">{ministry.category}</p>
                     <div className="w-6 h-0.5 bg-accent mb-4" />
@@ -163,9 +158,9 @@ export default function MinistriesPage() {
                       Inquire &rarr;
                     </Link>
                   </div>
-                </div>
+                </FadeInStaggerItem>
               ))}
-            </div>
+            </FadeInStagger>
           </div>
         </section>
 
@@ -173,7 +168,7 @@ export default function MinistriesPage() {
         <section className="py-20 md:py-24 bg-primary text-primary-foreground">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
+              <FadeIn>
                 <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-4">Ready to Serve?</p>
                 <h2 className="font-serif text-4xl md:text-5xl font-light leading-[1.1] mb-6">
                   Use Your Gifts<br />
@@ -185,19 +180,19 @@ export default function MinistriesPage() {
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center justify-center px-7 py-3 bg-accent text-white text-sm font-medium tracking-wide hover:bg-accent/90 transition-colors"
+                    className="inline-flex items-center justify-center px-7 py-3 bg-accent text-white text-sm font-medium tracking-wide hover:bg-accent/90 active:scale-[0.97] transition-all duration-150"
                   >
                     Get in Touch
                   </Link>
                   <Link
                     href="/visit"
-                    className="inline-flex items-center justify-center px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 transition-colors"
+                    className="inline-flex items-center justify-center px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 active:scale-[0.97] transition-all duration-150"
                   >
                     Plan Your Visit
                   </Link>
                 </div>
-              </div>
-              <div className="border border-primary-foreground/15 p-8">
+              </FadeIn>
+              <FadeIn delay={0.15} className="border border-primary-foreground/15 p-8">
                 <h3 className="font-serif text-xl font-semibold text-primary-foreground mb-5">Membership &amp; Serving</h3>
                 <p className="text-[14px] text-primary-foreground/65 leading-relaxed mb-5">
                   While all are welcome to attend our services, formal ministry leadership roles are reserved for covenant members of the church. We encourage those who regularly attend to pursue membership as the natural next step.
@@ -208,7 +203,7 @@ export default function MinistriesPage() {
                 >
                   Learn About Membership &rarr;
                 </Link>
-              </div>
+              </FadeIn>
             </div>
           </div>
         </section>

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/page-header'
+import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/motion'
 
 export const metadata = {
   title: 'What We Believe — Truth and Life Christian Church',
@@ -90,62 +91,64 @@ export default function FaithPage() {
         />
 
         {/* Confessional Note */}
-        <div className="bg-secondary border-b border-border">
-          <div className="max-w-6xl mx-auto px-6 lg:px-8 py-7">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
-              <p className="text-[13px] text-foreground/65 leading-relaxed max-w-2xl">
-                We subscribe to the <strong className="text-foreground/85 font-medium">Second London Baptist Confession of Faith (1689)</strong> as our formal doctrinal standard, along with the <strong className="text-foreground/85 font-medium">1689 Baptist Catechism</strong> for instruction.
-              </p>
-              <div className="flex gap-3 flex-shrink-0">
-                <a
-                  href="https://www.1689.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 border border-border text-foreground text-[12px] font-medium hover:bg-muted transition-colors whitespace-nowrap"
-                >
-                  Read the 1689 &rarr;
-                </a>
+        <FadeIn>
+          <div className="bg-secondary border-b border-border">
+            <div className="max-w-6xl mx-auto px-6 lg:px-8 py-7">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+                <p className="text-[13px] text-foreground/65 leading-relaxed max-w-2xl">
+                  We subscribe to the <strong className="text-foreground/85 font-medium">Second London Baptist Confession of Faith (1689)</strong> as our formal doctrinal standard, along with the <strong className="text-foreground/85 font-medium">1689 Baptist Catechism</strong> for instruction.
+                </p>
+                <div className="flex gap-3 flex-shrink-0">
+                  <a
+                    href="https://www.1689.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 border border-border text-foreground text-[12px] font-medium hover:bg-muted active:scale-[0.97] transition-all duration-150 whitespace-nowrap"
+                  >
+                    Read the 1689 &rarr;
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </FadeIn>
 
         {/* Articles of Faith */}
         <section className="py-20 md:py-24 bg-background">
           <div className="max-w-5xl mx-auto px-6 lg:px-8">
-            <div className="divide-y divide-border">
+            <FadeInStagger className="divide-y divide-border" stagger={0.05}>
               {articles.map((article) => (
-                <article key={article.number} className="py-12 first:pt-0">
-                  <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-12">
-                    {/* Left: article number + title */}
-                    <div className="lg:col-span-1">
-                      <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-2">
-                        Article {article.number}
-                      </p>
-                      <h2 className="font-serif text-xl font-semibold text-foreground leading-snug mb-3">
-                        {article.title}
-                      </h2>
-                      <p className="text-[11px] text-muted-foreground font-medium leading-relaxed border border-border/60 px-2.5 py-1.5 inline-block">
-                        {article.reference}
-                      </p>
+                <FadeInStaggerItem key={article.number} className="py-12 first:pt-0">
+                  <article>
+                    <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-12">
+                      <div className="lg:col-span-1">
+                        <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-2">
+                          Article {article.number}
+                        </p>
+                        <h2 className="font-serif text-xl font-semibold text-foreground leading-snug mb-3">
+                          {article.title}
+                        </h2>
+                        <p className="text-[11px] text-muted-foreground font-medium leading-relaxed border border-border/60 px-2.5 py-1.5 inline-block">
+                          {article.reference}
+                        </p>
+                      </div>
+                      <div className="lg:col-span-3">
+                        <p className="text-[15px] text-foreground/75 leading-[1.75]">
+                          {article.body}
+                        </p>
+                      </div>
                     </div>
-                    {/* Right: body */}
-                    <div className="lg:col-span-3">
-                      <p className="text-[15px] text-foreground/75 leading-[1.75]">
-                        {article.body}
-                      </p>
-                    </div>
-                  </div>
-                </article>
+                  </article>
+                </FadeInStaggerItem>
               ))}
-            </div>
+            </FadeInStagger>
           </div>
         </section>
 
         {/* CTA */}
         <section className="py-20 md:py-24 bg-primary text-primary-foreground">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <div className="max-w-2xl">
+            <FadeIn className="max-w-2xl">
               <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-4">Questions?</p>
               <h2 className="font-serif text-4xl md:text-5xl font-light leading-[1.1] mb-6">
                 We welcome<br />
@@ -157,18 +160,18 @@ export default function FaithPage() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-7 py-3 bg-accent text-white text-sm font-medium tracking-wide hover:bg-accent/90 transition-colors"
+                  className="inline-flex items-center justify-center px-7 py-3 bg-accent text-white text-sm font-medium tracking-wide hover:bg-accent/90 active:scale-[0.97] transition-all duration-150"
                 >
                   Contact a Pastor
                 </Link>
                 <Link
                   href="/about"
-                  className="inline-flex items-center justify-center px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 transition-colors"
+                  className="inline-flex items-center justify-center px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 active:scale-[0.97] transition-all duration-150"
                 >
                   About Our Church
                 </Link>
               </div>
-            </div>
+            </FadeIn>
           </div>
         </section>
       </main>

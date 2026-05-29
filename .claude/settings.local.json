@@ -5,7 +5,8 @@
       "Bash(pnpm install *)",
       "Bash(pnpm add *)",
       "Bash(cat)",
-      "Bash(rm components/turnstile-widget.tsx)"
+      "Bash(rm components/turnstile-widget.tsx)",
+      "Bash(node -e \"console.log\\('motion installed:', require\\('./node_modules/motion/package.json'\\).version\\)\")"
     ]
   }
 }

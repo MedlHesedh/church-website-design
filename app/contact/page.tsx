@@ -8,6 +8,7 @@ import { toast } from 'sonner'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/page-header'
+import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/motion'
 import { contactSchema, type ContactFormValues } from '@/lib/contact-schema'
 import { submitContactForm } from './actions'
 
@@ -62,7 +63,7 @@ export default function ContactPage() {
         {/* Contact Info */}
         <section className="py-20 md:py-24 bg-background">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border mb-10">
+            <FadeInStagger className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border mb-10">
               {[
                 {
                   label: 'Address',
@@ -83,7 +84,7 @@ export default function ContactPage() {
                   sublabel: 'We respond within one business day',
                 },
               ].map((item, i) => (
-                <div
+                <FadeInStaggerItem
                   key={i}
                   className="bg-card border-b md:border-b-0 md:border-r border-border last:border-0 p-7"
                 >
@@ -103,12 +104,12 @@ export default function ContactPage() {
                     </p>
                   )}
                   <p className="text-[12px] text-muted-foreground">{item.sublabel}</p>
-                </div>
+                </FadeInStaggerItem>
               ))}
-            </div>
+            </FadeInStagger>
 
             {/* Map Placeholder */}
-            <div className="bg-secondary border border-border h-64 flex items-center justify-center mb-10">
+            <FadeIn className="bg-secondary border border-border h-64 flex items-center justify-center mb-10">
               <div className="text-center">
                 <p className="text-[13px] text-muted-foreground mb-2">
                   Map · 4821 Covenant Way, Macon, GA 31201
@@ -122,19 +123,21 @@ export default function ContactPage() {
                   Open in Google Maps &rarr;
                 </a>
               </div>
-            </div>
+            </FadeIn>
           </div>
         </section>
 
         {/* Contact Form */}
         <section className="py-20 md:py-24 bg-secondary">
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">
-              Write to Us
-            </p>
-            <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-10 leading-snug">
-              Send a Message
-            </h2>
+            <FadeIn className="mb-10">
+              <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">
+                Write to Us
+              </p>
+              <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground leading-snug">
+                Send a Message
+              </h2>
+            </FadeIn>
 
             {submitted && (
               <div className="mb-8 border border-accent/30 bg-accent/5 p-5">
@@ -146,136 +149,138 @@ export default function ContactPage() {
               </div>
             )}
 
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              noValidate
-              className="bg-card border border-border p-8 md:p-10 space-y-6"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2"
-                  >
-                    Your Name <span className="text-accent">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="John Smith"
-                    className={inputClass}
-                    {...register('name')}
-                  />
-                  {fieldError(errors.name?.message)}
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2"
-                  >
-                    Email Address <span className="text-accent">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    placeholder="john@example.com"
-                    className={inputClass}
-                    {...register('email')}
-                  />
-                  {fieldError(errors.email?.message)}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2"
-                  >
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    placeholder="(555) 123-4567"
-                    className={inputClass}
-                    {...register('phone')}
-                  />
-                  {fieldError(errors.phone?.message)}
-                </div>
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2"
-                  >
-                    Subject <span className="text-accent">*</span>
-                  </label>
-                  <select id="subject" className={inputClass} {...register('subject')}>
-                    <option value="">Select a topic…</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="prayer">Prayer Request</option>
-                    <option value="visit">Planning to Visit</option>
-                    <option value="membership">Church Membership</option>
-                    <option value="counseling">Biblical Counseling</option>
-                    <option value="volunteer">Serving &amp; Volunteering</option>
-                    <option value="other">Other</option>
-                  </select>
-                  {fieldError(errors.subject?.message)}
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2"
-                >
-                  Message <span className="text-accent">*</span>
-                </label>
-                <textarea
-                  id="message"
-                  rows={6}
-                  placeholder="How can we help you?"
-                  className={`${inputClass} resize-none`}
-                  {...register('message')}
-                />
-                {fieldError(errors.message?.message)}
-              </div>
-
-              <div className="flex items-start gap-3">
-                <input
-                  type="checkbox"
-                  id="privacy"
-                  className="mt-0.5 w-4 h-4 border border-border accent-primary"
-                  {...register('consent')}
-                />
-                <div>
-                  <label
-                    htmlFor="privacy"
-                    className="text-[13px] text-foreground/60 leading-relaxed"
-                  >
-                    I understand that this information will be used to respond to my inquiry and may
-                    be shared with the pastoral staff of Truth and Life Christian Church.
-                  </label>
-                  {fieldError(errors.consent?.message)}
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full sm:w-auto px-8 py-3 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            <FadeIn delay={0.1}>
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                noValidate
+                className="bg-card border border-border p-8 md:p-10 space-y-6"
               >
-                {isSubmitting ? 'Sending…' : 'Send Message'}
-              </button>
-            </form>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2"
+                    >
+                      Your Name <span className="text-accent">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      placeholder="John Smith"
+                      className={inputClass}
+                      {...register('name')}
+                    />
+                    {fieldError(errors.name?.message)}
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2"
+                    >
+                      Email Address <span className="text-accent">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="john@example.com"
+                      className={inputClass}
+                      {...register('email')}
+                    />
+                    {fieldError(errors.email?.message)}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2"
+                    >
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      placeholder="(555) 123-4567"
+                      className={inputClass}
+                      {...register('phone')}
+                    />
+                    {fieldError(errors.phone?.message)}
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="subject"
+                      className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2"
+                    >
+                      Subject <span className="text-accent">*</span>
+                    </label>
+                    <select id="subject" className={inputClass} {...register('subject')}>
+                      <option value="">Select a topic…</option>
+                      <option value="general">General Inquiry</option>
+                      <option value="prayer">Prayer Request</option>
+                      <option value="visit">Planning to Visit</option>
+                      <option value="membership">Church Membership</option>
+                      <option value="counseling">Biblical Counseling</option>
+                      <option value="volunteer">Serving &amp; Volunteering</option>
+                      <option value="other">Other</option>
+                    </select>
+                    {fieldError(errors.subject?.message)}
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-[12px] font-medium tracking-[0.08em] uppercase text-foreground/70 mb-2"
+                  >
+                    Message <span className="text-accent">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={6}
+                    placeholder="How can we help you?"
+                    className={`${inputClass} resize-none`}
+                    {...register('message')}
+                  />
+                  {fieldError(errors.message?.message)}
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="privacy"
+                    className="mt-0.5 w-4 h-4 border border-border accent-primary"
+                    {...register('consent')}
+                  />
+                  <div>
+                    <label
+                      htmlFor="privacy"
+                      className="text-[13px] text-foreground/60 leading-relaxed"
+                    >
+                      I understand that this information will be used to respond to my inquiry and may
+                      be shared with the pastoral staff of Truth and Life Christian Church.
+                    </label>
+                    {fieldError(errors.consent?.message)}
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full sm:w-auto px-8 py-3 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 active:scale-[0.97] transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Sending…' : 'Send Message'}
+                </button>
+              </form>
+            </FadeIn>
           </div>
         </section>
 
         {/* Prayer Requests */}
         <section className="py-20 md:py-24 bg-background">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-border">
-              <div className="bg-card border-b md:border-b-0 md:border-r border-border p-8 md:p-10">
+            <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-border">
+              <FadeInStaggerItem className="bg-card border-b md:border-b-0 md:border-r border-border p-8 md:p-10">
                 <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-3">
                   Prayer
                 </p>
@@ -291,8 +296,8 @@ export default function ContactPage() {
                   Prayer requests shared with the pastoral team are held in strict confidence unless
                   you indicate otherwise.
                 </p>
-              </div>
-              <div className="bg-primary text-primary-foreground p-8 md:p-10">
+              </FadeInStaggerItem>
+              <FadeInStaggerItem className="bg-primary text-primary-foreground p-8 md:p-10">
                 <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-3">
                   Pastoral Care
                 </p>
@@ -314,8 +319,8 @@ export default function ContactPage() {
                     James 5:13–14
                   </cite>
                 </blockquote>
-              </div>
-            </div>
+              </FadeInStaggerItem>
+            </FadeInStagger>
           </div>
         </section>
       </main>

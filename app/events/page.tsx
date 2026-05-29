@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/page-header'
+import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/motion'
 
 export const metadata = {
   title: 'Events — Truth and Life Christian Church',
@@ -12,7 +13,6 @@ const regularServices = [
   { day: 'Sunday', time: '9:15 AM', title: 'Sunday School', location: 'Classrooms' },
   { day: 'Sunday', time: '8:00 AM', title: 'Morning Worship', location: 'Sanctuary' },
   { day: 'Sunday', time: '6:00 PM', title: 'Prayer Meeting / Friday Service', location: 'Sanctuary' },
-  // { day: 'Wednesday', time: '7:00 PM', title: 'Prayer Meeting', location: 'Fellowship Hall' },
 ]
 
 const upcomingEvents = [
@@ -105,77 +105,83 @@ export default function EventsPage() {
         {/* Regular Services */}
         <section className="py-20 md:py-24 bg-background">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Every Week</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-10 max-w-md leading-snug">
-              Our Regular Gatherings
-            </h2>
+            <FadeIn className="mb-10">
+              <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Every Week</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground max-w-md leading-snug">
+                Our Regular Gatherings
+              </h2>
+            </FadeIn>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-border">
+            <FadeInStagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-border">
               {regularServices.map((service, i) => (
-                <div key={i} className="bg-card border-b sm:border-b-0 sm:border-r border-border last:border-0 p-7">
+                <FadeInStaggerItem key={i} className="bg-card border-b sm:border-b-0 sm:border-r border-border last:border-0 p-7">
                   <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-3">{service.day}</p>
                   <p className="font-serif text-3xl font-light text-foreground mb-1">{service.time.split(' ')[0]}</p>
                   <p className="text-sm text-muted-foreground mb-3">{service.time.split(' ')[1]}</p>
                   <p className="text-[15px] font-semibold text-foreground mb-1">{service.title}</p>
                   <p className="text-[13px] text-muted-foreground">{service.location}</p>
-                </div>
+                </FadeInStaggerItem>
               ))}
-            </div>
+            </FadeInStagger>
           </div>
         </section>
 
         {/* Upcoming Events */}
         <section className="py-20 md:py-24 bg-secondary">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Coming Up</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-10 max-w-md leading-snug">
-              Upcoming Events
-            </h2>
+            <FadeIn className="mb-10">
+              <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Coming Up</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground max-w-md leading-snug">
+                Upcoming Events
+              </h2>
+            </FadeIn>
 
-            <div className="space-y-0 border border-border">
+            <FadeInStagger className="space-y-0 border border-border">
               {upcomingEvents.map((event) => (
-                <div key={event.id} className="bg-card border-b border-border last:border-b-0 flex">
-                  {/* Date Column */}
-                  <div className="w-20 md:w-24 bg-primary text-primary-foreground flex flex-col items-center justify-center py-8 flex-shrink-0 text-center">
-                    <span className="text-[10px] font-medium tracking-widest uppercase text-primary-foreground/55">
-                      {event.month}
-                    </span>
-                    <span className="font-serif text-3xl md:text-4xl font-light leading-none mt-1">
-                      {event.day}
-                    </span>
-                    <span className="text-[10px] text-primary-foreground/55 mt-1">
-                      {event.dayOfWeek}
-                    </span>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 px-6 md:px-8 py-6">
-                    <div className="flex flex-wrap items-start gap-2 mb-3">
-                      <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-accent border border-accent/25 px-2 py-0.5">
-                        {event.type}
+                <FadeInStaggerItem key={event.id} className="border-b border-border last:border-b-0">
+                  <div className="bg-card flex">
+                    {/* Date Column */}
+                    <div className="w-20 md:w-24 bg-primary text-primary-foreground flex flex-col items-center justify-center py-8 flex-shrink-0 text-center">
+                      <span className="text-[10px] font-medium tracking-widest uppercase text-primary-foreground/55">
+                        {event.month}
                       </span>
-                      <span className="text-[12px] text-muted-foreground self-center">
-                        {event.time} · {event.location}
+                      <span className="font-serif text-3xl md:text-4xl font-light leading-none mt-1">
+                        {event.day}
+                      </span>
+                      <span className="text-[10px] text-primary-foreground/55 mt-1">
+                        {event.dayOfWeek}
                       </span>
                     </div>
-                    <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-3 leading-snug">
-                      {event.title}
-                    </h3>
-                    <p className="text-[14px] text-foreground/65 leading-relaxed">
-                      {event.description}
-                    </p>
+
+                    {/* Content */}
+                    <div className="flex-1 px-6 md:px-8 py-6">
+                      <div className="flex flex-wrap items-start gap-2 mb-3">
+                        <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-accent border border-accent/25 px-2 py-0.5">
+                          {event.type}
+                        </span>
+                        <span className="text-[12px] text-muted-foreground self-center">
+                          {event.time} · {event.location}
+                        </span>
+                      </div>
+                      <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-3 leading-snug">
+                        {event.title}
+                      </h3>
+                      <p className="text-[14px] text-foreground/65 leading-relaxed">
+                        {event.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </FadeInStaggerItem>
               ))}
-            </div>
+            </FadeInStagger>
           </div>
         </section>
 
         {/* Stay Updated */}
         <section className="py-20 md:py-24 bg-background">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-border">
-              <div className="bg-card border-b md:border-b-0 md:border-r border-border p-8 md:p-10">
+            <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-border">
+              <FadeInStaggerItem className="bg-card border-b md:border-b-0 md:border-r border-border p-8 md:p-10">
                 <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-3">Stay Informed</p>
                 <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">Weekly Newsletter</h3>
                 <p className="text-[14px] text-foreground/65 leading-relaxed mb-6">
@@ -189,13 +195,13 @@ export default function EventsPage() {
                   />
                   <button
                     type="submit"
-                    className="px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 transition-colors whitespace-nowrap"
+                    className="px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 active:scale-[0.97] transition-all duration-150 whitespace-nowrap"
                   >
                     Subscribe
                   </button>
                 </form>
-              </div>
-              <div className="bg-card p-8 md:p-10">
+              </FadeInStaggerItem>
+              <FadeInStaggerItem className="bg-card p-8 md:p-10">
                 <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-3">Questions?</p>
                 <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">Contact the Office</h3>
                 <p className="text-[14px] text-foreground/65 leading-relaxed mb-6">
@@ -213,8 +219,8 @@ export default function EventsPage() {
                   </p>
                   <p className="text-[13px] text-muted-foreground mt-3">Office hours: Monday–Friday, 9:00 AM – 4:00 PM</p>
                 </div>
-              </div>
-            </div>
+              </FadeInStaggerItem>
+            </FadeInStagger>
           </div>
         </section>
       </main>

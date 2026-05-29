@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/page-header'
+import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/motion'
 
 export const metadata = {
   title: 'Plan Your Visit — Truth and Life Christian Church',
@@ -53,7 +54,7 @@ export default function VisitPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
               {/* Location */}
-              <div>
+              <FadeIn>
                 <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Find Us</p>
                 <h2 className="font-serif text-2xl font-semibold text-foreground mb-6">Location &amp; Directions</h2>
 
@@ -69,7 +70,7 @@ export default function VisitPage() {
                     href="https://maps.google.com/?q=4821+Covenant+Way+Macon+GA+31201"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 transition-colors"
+                    className="inline-flex items-center px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:bg-primary/90 active:scale-[0.97] transition-all duration-150"
                   >
                     Get Directions &rarr;
                   </a>
@@ -81,10 +82,10 @@ export default function VisitPage() {
                     Free parking is available in the main lot and the overflow lot across the street. Accessible spaces are clearly marked near the main entrance. Arrive 10–15 minutes early, especially on your first visit.
                   </p>
                 </div>
-              </div>
+              </FadeIn>
 
               {/* Service Times */}
-              <div>
+              <FadeIn delay={0.1}>
                 <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Schedule</p>
                 <h2 className="font-serif text-2xl font-semibold text-foreground mb-6">Service Times</h2>
 
@@ -93,7 +94,6 @@ export default function VisitPage() {
                     { label: 'Sunday School', time: '9:15 AM', note: 'All ages · Classrooms' },
                     { label: 'Morning Worship', time: '8:00 AM', note: 'Main Service · Sanctuary (~80 min)' },
                     { label: 'Prayer Meeting / Friday Service', time: '6:00 PM', note: 'Bible Study & Prayer · Sanctuary' },
-                    // { label: 'Wednesday Prayer', time: '7:00 PM', note: 'Corporate Prayer · Fellowship Hall' },
                   ].map((service, i) => (
                     <div key={i} className="bg-card border-b border-border last:border-b-0 px-6 py-5 flex items-center justify-between">
                       <div>
@@ -104,7 +104,7 @@ export default function VisitPage() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </FadeIn>
             </div>
           </div>
         </section>
@@ -112,12 +112,14 @@ export default function VisitPage() {
         {/* What to Expect */}
         <section className="py-20 md:py-24 bg-secondary">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">First Visit</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-10 max-w-md leading-snug">
-              What to Expect
-            </h2>
+            <FadeIn className="mb-10">
+              <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">First Visit</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground max-w-md leading-snug">
+                What to Expect
+              </h2>
+            </FadeIn>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-border">
+            <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-border">
               {[
                 {
                   title: 'The Atmosphere',
@@ -136,25 +138,27 @@ export default function VisitPage() {
                   body: 'We linger. Fellowship after the service — coffee in the foyer, conversations in the parking lot — is part of who we are. You will be warmly welcomed and invited to introduce yourself. A welcome bag with information about the church will be given to first-time guests.',
                 },
               ].map((item, i) => (
-                <div key={i} className="bg-card border-b md:border-r border-border last:border-0 p-7">
+                <FadeInStaggerItem key={i} className="bg-card border-b md:border-r border-border last:border-0 p-7">
                   <div className="w-5 h-0.5 bg-accent mb-4" />
                   <h3 className="font-serif text-xl font-semibold text-foreground mb-3">{item.title}</h3>
                   <p className="text-[14px] text-foreground/65 leading-relaxed">{item.body}</p>
-                </div>
+                </FadeInStaggerItem>
               ))}
-            </div>
+            </FadeInStagger>
           </div>
         </section>
 
         {/* Step-by-Step Guide */}
         <section className="py-20 md:py-24 bg-background">
           <div className="max-w-5xl mx-auto px-6 lg:px-8">
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Your First Sunday</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-10 max-w-md leading-snug">
-              A Simple Guide
-            </h2>
+            <FadeIn className="mb-10">
+              <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Your First Sunday</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground max-w-md leading-snug">
+                A Simple Guide
+              </h2>
+            </FadeIn>
 
-            <div className="space-y-0 border border-border">
+            <FadeInStagger className="space-y-0 border border-border">
               {[
                 {
                   step: '01',
@@ -182,53 +186,57 @@ export default function VisitPage() {
                   body: 'After the service, we invite you to stay for coffee and conversation. A pastor or elder will be happy to answer any questions, give you more information about the church, or simply talk.',
                 },
               ].map((item, i) => (
-                <div key={i} className="bg-card border-b border-border last:border-b-0 flex items-start gap-6 px-7 py-6">
+                <FadeInStaggerItem key={i} className="bg-card border-b border-border last:border-b-0 flex items-start gap-6 px-7 py-6">
                   <span className="font-serif text-2xl font-light text-accent/50 flex-shrink-0 w-8">{item.step}</span>
                   <div>
                     <h3 className="font-serif text-lg font-semibold text-foreground mb-2">{item.title}</h3>
                     <p className="text-[14px] text-foreground/65 leading-relaxed">{item.body}</p>
                   </div>
-                </div>
+                </FadeInStaggerItem>
               ))}
-            </div>
+            </FadeInStagger>
           </div>
         </section>
 
         {/* FAQ */}
         <section className="py-20 md:py-24 bg-secondary">
           <div className="max-w-5xl mx-auto px-6 lg:px-8">
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Common Questions</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-10 max-w-md leading-snug">
-              Frequently Asked Questions
-            </h2>
+            <FadeIn className="mb-10">
+              <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Common Questions</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground max-w-md leading-snug">
+                Frequently Asked Questions
+              </h2>
+            </FadeIn>
 
-            <div className="divide-y divide-border border border-border">
+            <FadeInStagger className="divide-y divide-border border border-border" stagger={0.05}>
               {faqs.map((faq, i) => (
-                <details key={i} className="group bg-card">
-                  <summary className="flex items-center justify-between px-7 py-5 cursor-pointer list-none font-semibold text-foreground text-[15px] hover:text-primary transition-colors">
-                    {faq.q}
-                    <svg
-                      className="w-4 h-4 text-muted-foreground flex-shrink-0 ml-4 transition-transform group-open:rotate-180"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </summary>
-                  <p className="px-7 pb-6 pt-1 text-[14px] text-foreground/65 leading-relaxed">
-                    {faq.a}
-                  </p>
-                </details>
+                <FadeInStaggerItem key={i} className="group bg-card">
+                  <details>
+                    <summary className="flex items-center justify-between px-7 py-5 cursor-pointer list-none font-semibold text-foreground text-[15px] hover:text-primary transition-colors">
+                      {faq.q}
+                      <svg
+                        className="w-4 h-4 text-muted-foreground flex-shrink-0 ml-4 transition-transform group-open:rotate-180"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </summary>
+                    <p className="px-7 pb-6 pt-1 text-[14px] text-foreground/65 leading-relaxed">
+                      {faq.a}
+                    </p>
+                  </details>
+                </FadeInStaggerItem>
               ))}
-            </div>
+            </FadeInStagger>
           </div>
         </section>
 
         {/* Final CTA */}
         <section className="py-20 md:py-24 bg-primary text-primary-foreground">
-          <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+          <FadeIn className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div className="max-w-xl">
               <h2 className="font-serif text-3xl md:text-4xl font-light leading-snug mb-3">
                 We hope to meet you Sunday.
@@ -240,7 +248,7 @@ export default function VisitPage() {
             <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-7 py-3 bg-accent text-white text-sm font-medium tracking-wide hover:bg-accent/90 transition-colors"
+                className="inline-flex items-center justify-center px-7 py-3 bg-accent text-white text-sm font-medium tracking-wide hover:bg-accent/90 active:scale-[0.97] transition-all duration-150"
               >
                 Contact Us
               </Link>
@@ -248,12 +256,12 @@ export default function VisitPage() {
                 href="https://maps.google.com/?q=4821+Covenant+Way+Macon+GA+31201"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 transition-colors"
+                className="inline-flex items-center justify-center px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 active:scale-[0.97] transition-all duration-150"
               >
                 Get Directions
               </a>
             </div>
-          </div>
+          </FadeIn>
         </section>
       </main>
 

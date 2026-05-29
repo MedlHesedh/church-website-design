@@ -1,6 +1,7 @@
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/page-header'
+import { FadeIn, FadeInStagger, FadeInStaggerItem } from '@/components/motion'
 
 export const metadata = {
   title: 'Messages — Truth and Life Christian Church',
@@ -93,7 +94,7 @@ export default function MessagesPage() {
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
 
             {/* Search / Filter Bar */}
-            <div className="flex flex-col sm:flex-row gap-3 mb-10">
+            <FadeIn className="flex flex-col sm:flex-row gap-3 mb-10">
               <input
                 type="search"
                 placeholder="Search by title, passage, or preacher…"
@@ -111,13 +112,13 @@ export default function MessagesPage() {
                 <option>Most Recent</option>
                 <option>Oldest First</option>
               </select>
-            </div>
+            </FadeIn>
 
             {/* Sermon Cards */}
-            <div className="space-y-0 border border-border">
+            <FadeInStagger className="space-y-0 border border-border" stagger={0.06}>
               {sermons.map((sermon) => (
-                <article key={sermon.id} className="group bg-card border-b border-border last:border-b-0">
-                  <div className="flex flex-col md:flex-row">
+                <FadeInStaggerItem key={sermon.id} className="border-b border-border last:border-b-0">
+                  <article className="group bg-card flex flex-col md:flex-row">
                     {/* Video Area */}
                     <div className="md:w-72 lg:w-80 flex-shrink-0 bg-secondary border-b md:border-b-0 md:border-r border-border">
                       {sermon.youtubeId ? (
@@ -167,39 +168,41 @@ export default function MessagesPage() {
                         </p>
                       </div>
                       <div className="px-7 py-5 border-t border-border flex flex-wrap gap-2">
-                        <button className="px-5 py-2 bg-primary text-primary-foreground text-[13px] font-medium tracking-wide hover:bg-primary/90 transition-colors">
+                        <button className="px-5 py-2 bg-primary text-primary-foreground text-[13px] font-medium tracking-wide hover:bg-primary/90 active:scale-[0.97] transition-all duration-150">
                           Watch Sermon
                         </button>
-                        <button className="px-5 py-2 border border-border text-foreground text-[13px] font-medium hover:bg-secondary transition-colors">
+                        <button className="px-5 py-2 border border-border text-foreground text-[13px] font-medium hover:bg-secondary active:scale-[0.97] transition-all duration-150">
                           Download Audio
                         </button>
-                        <button className="px-5 py-2 border border-border text-foreground text-[13px] font-medium hover:bg-secondary transition-colors">
+                        <button className="px-5 py-2 border border-border text-foreground text-[13px] font-medium hover:bg-secondary active:scale-[0.97] transition-all duration-150">
                           Sermon Notes
                         </button>
                       </div>
                     </div>
-                  </div>
-                </article>
+                  </article>
+                </FadeInStaggerItem>
               ))}
-            </div>
+            </FadeInStagger>
 
-            <div className="mt-8 text-center">
-              <button className="px-8 py-3 border border-border text-foreground text-sm font-medium hover:bg-secondary transition-colors">
+            <FadeIn className="mt-8 text-center">
+              <button className="px-8 py-3 border border-border text-foreground text-sm font-medium hover:bg-secondary active:scale-[0.97] transition-all duration-150">
                 Load More Sermons
               </button>
-            </div>
+            </FadeIn>
           </div>
         </section>
 
         {/* Resources */}
         <section className="py-20 md:py-24 bg-secondary">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Stay Connected</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-10 max-w-md leading-snug">
-              Never Miss a Sermon
-            </h2>
+            <FadeIn className="mb-10">
+              <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Stay Connected</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground max-w-md leading-snug">
+                Never Miss a Sermon
+              </h2>
+            </FadeIn>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border bg-card">
+            <FadeInStagger className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border bg-card">
               {[
                 {
                   label: 'YouTube',
@@ -223,16 +226,16 @@ export default function MessagesPage() {
                   href: '#',
                 },
               ].map((item, i) => (
-                <div key={i} className="p-7 border-b md:border-b-0 md:border-r border-border last:border-0">
+                <FadeInStaggerItem key={i} className="p-7 border-b md:border-b-0 md:border-r border-border last:border-0">
                   <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-accent mb-3">{item.label}</p>
                   <h3 className="font-serif text-xl font-semibold text-foreground mb-3">{item.title}</h3>
                   <p className="text-[14px] text-foreground/65 leading-relaxed mb-6">{item.body}</p>
                   <a href={item.href} className="text-sm font-medium text-primary hover:text-accent transition-colors">
                     {item.cta} &rarr;
                   </a>
-                </div>
+                </FadeInStaggerItem>
               ))}
-            </div>
+            </FadeInStagger>
           </div>
         </section>
       </main>

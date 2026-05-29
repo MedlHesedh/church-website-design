@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { PageHeader } from '@/components/page-header'
+import { FadeIn, FadeInStagger, FadeInStaggerItem, ScaleReveal } from '@/components/motion'
 
 export const metadata = {
   title: 'Leadership — Truth and Life Christian Church',
@@ -80,29 +81,32 @@ export default function LeadershipPage() {
         />
 
         {/* Polity Note */}
-        <div className="bg-secondary border-b border-border">
-          <div className="max-w-6xl mx-auto px-6 lg:px-8 py-7">
-            <p className="text-[13px] text-foreground/65 leading-relaxed max-w-3xl">
-              We hold to congregational polity with plural elder leadership — a pattern we believe is clearly established in the New Testament. Elders bear responsibility for the spiritual oversight of the congregation. Deacons serve the physical and practical needs of the body, freeing the elders for prayer and ministry of the Word (Acts 6:1–7).
-            </p>
+        <FadeIn>
+          <div className="bg-secondary border-b border-border">
+            <div className="max-w-6xl mx-auto px-6 lg:px-8 py-7">
+              <p className="text-[13px] text-foreground/65 leading-relaxed max-w-3xl">
+                We hold to congregational polity with plural elder leadership — a pattern we believe is clearly established in the New Testament. Elders bear responsibility for the spiritual oversight of the congregation. Deacons serve the physical and practical needs of the body, freeing the elders for prayer and ministry of the Word (Acts 6:1–7).
+              </p>
+            </div>
           </div>
-        </div>
+        </FadeIn>
 
         {/* Elders */}
         <section className="py-20 md:py-24 bg-background">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Pastoral Staff</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-10 max-w-md leading-snug">
-              Elders &amp; Pastors
-            </h2>
+            <FadeIn className="mb-10">
+              <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Pastoral Staff</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground max-w-md leading-snug">
+                Elders &amp; Pastors
+              </h2>
+            </FadeIn>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border">
+            <FadeInStagger className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-border">
               {elders.map((person, i) => (
-                <div key={i} className="bg-card border-b md:border-b-0 md:border-r border-border last:border-0 flex flex-col">
-                  {/* Photo Placeholder */}
-                  <div className="aspect-[4/3] bg-secondary border-b border-border flex items-center justify-center">
+                <FadeInStaggerItem key={i} className="bg-card border-b md:border-b-0 md:border-r border-border last:border-0 flex flex-col">
+                  <ScaleReveal className="aspect-[4/3] bg-secondary border-b border-border flex items-center justify-center">
                     <PersonIcon />
-                  </div>
+                  </ScaleReveal>
                   <div className="p-7 flex flex-col flex-1">
                     <div className="flex-1">
                       <h3 className="font-serif text-xl font-semibold text-foreground mb-0.5">{person.name}</h3>
@@ -119,23 +123,25 @@ export default function LeadershipPage() {
                       </a>
                     </div>
                   </div>
-                </div>
+                </FadeInStaggerItem>
               ))}
-            </div>
+            </FadeInStagger>
           </div>
         </section>
 
         {/* Deacons */}
         <section className="py-20 md:py-24 bg-secondary">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Service</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-10 max-w-md leading-snug">
-              Deacons
-            </h2>
+            <FadeIn className="mb-10">
+              <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-3">Service</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground max-w-md leading-snug">
+                Deacons
+              </h2>
+            </FadeIn>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-border">
+            <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-border">
               {deacons.map((person, i) => (
-                <div key={i} className="bg-card border-b md:border-r border-border p-7 last:border-0">
+                <FadeInStaggerItem key={i} className="bg-card border-b md:border-r border-border p-7 last:border-0">
                   <div className="flex items-start gap-5">
                     <div className="w-14 h-14 bg-secondary border border-border flex items-center justify-center flex-shrink-0">
                       <svg viewBox="0 0 24 24" className="w-6 h-6 text-muted-foreground/30 fill-current">
@@ -154,15 +160,15 @@ export default function LeadershipPage() {
                       </a>
                     </div>
                   </div>
-                </div>
+                </FadeInStaggerItem>
               ))}
-            </div>
+            </FadeInStagger>
           </div>
         </section>
 
         {/* CTA */}
         <section className="py-20 md:py-24 bg-primary text-primary-foreground">
-          <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-8">
+          <FadeIn className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-8">
             <div className="max-w-xl">
               <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-accent mb-4">Interested in Ministry?</p>
               <h2 className="font-serif text-3xl md:text-4xl font-light leading-snug mb-4">
@@ -175,18 +181,18 @@ export default function LeadershipPage() {
             <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
               <Link
                 href="/ministries"
-                className="inline-flex items-center justify-center px-7 py-3 bg-accent text-white text-sm font-medium tracking-wide hover:bg-accent/90 transition-colors"
+                className="inline-flex items-center justify-center px-7 py-3 bg-accent text-white text-sm font-medium tracking-wide hover:bg-accent/90 active:scale-[0.97] transition-all duration-150"
               >
                 Our Ministries
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 transition-colors"
+                className="inline-flex items-center justify-center px-7 py-3 border border-primary-foreground/25 text-primary-foreground text-sm font-medium tracking-wide hover:border-primary-foreground/50 active:scale-[0.97] transition-all duration-150"
               >
                 Get in Touch
               </Link>
             </div>
-          </div>
+          </FadeIn>
         </section>
       </main>
 
